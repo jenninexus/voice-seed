@@ -40,10 +40,10 @@ neophi         → Signal Crew visual/canon SSOT (characters.md) — not speakin
 theme kits     → colors / tokens / CSS — NOT writing voice
 ```
 
-`{bot}` is a clone-relative Discord runtime (live bot **or** a future bot-seed
-checkout). Same relative files: `content/greeting.md`, `docs/STYLE-SPEC.md`,
-`resources/assets.json`, `resources/agency-profiles.json`. Do not pin a GitHub
-URL until that seed remote exists.
+`{bot}` is a clone-relative Discord runtime (live bot **or**
+[bot-seed](https://github.com/jenninexus/bot-seed)). Same relative files:
+`content/greeting.md`, `docs/STYLE-SPEC.md`, `resources/assets.json`,
+`resources/agency-profiles.json`.
 
 | Kit | Role vs voice |
 |---|---|

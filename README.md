@@ -39,7 +39,8 @@ git clone https://github.com/jenninexus/voice-seed.git
 3. Copy [`templates/agent-chatVoice.seed.md`](templates/agent-chatVoice.seed.md)
    into `agency/agents/YourAgent.md`.
 4. Deepen Discord samples in the consuming bot’s `resources/agency-profiles.json`
-   (same relative path whether you use a live bot or a future bot-seed clone).
+   (same relative path whether you use a live bot or
+   [bot-seed](https://github.com/jenninexus/bot-seed)).
 
 | Question | Answer |
 |---|---|

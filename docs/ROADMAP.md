@@ -67,5 +67,5 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
 - No second prose SSOT under `characters/`
 - No webhook URLs, tokens, or vault claims in this repo
 - No merging human `characterVoice` into bot greeters
-- No linking a bot-seed GitHub URL until that remote exists
+- Bot Seed URL is [jenninexus/bot-seed](https://github.com/jenninexus/bot-seed) — still never a submodule
 - No Handshake / investor / collab cards — those never return here

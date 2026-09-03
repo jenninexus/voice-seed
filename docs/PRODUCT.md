@@ -35,7 +35,7 @@ Studio packaging / store board lives in the local product-design hub (`/products
 | pdf-designer | `character` + `application` vaults — this map only points | yes |
 | socials | `socialMarketing` format-manifests | private until own scrub |
 | theme-designer | colors only; never a voice SSOT | yes |
-| bot-seed | future `{bot}/` greeter + loft JSON — GitHub after this repo is public | no remote yet |
+| [bot-seed](https://github.com/jenninexus/bot-seed) | `{bot}/` greeter + loft JSON | yes |
 | NEOPHI site | `signalTone` cards live *here*; visual canon stays in neophi | site live |
 | Live `jenni-bot` / `martian-bot` | consumers, **private forever** | never |
 
