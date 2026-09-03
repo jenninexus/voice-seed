@@ -1,0 +1,43 @@
+{
+  "_README": [
+    "Seed for a HUMAN characterVoice block.",
+    "Copy fields into pdf-designer storage/users/<id>.json → characterVoice.",
+    "Then deepen application prose in storage/<id>/resume-source.json → voice.",
+    "Add a card under voice-seed/characters/humans/ and an entry in registry.json."
+  ],
+  "characterVoice": {
+    "_ssot": "Personality + register map. Application prose SSOT = vault voice (registers.application).",
+    "personality": {
+      "traits": ["Trait one", "Trait two", "Trait three"],
+      "coreDrive": "One sentence: what they are trying to make / why they work.",
+      "catchphrase": "Optional short line.",
+      "backgroundFlavor": "Where they came from creatively."
+    },
+    "contrastWithPartner": {
+      "_note": "OPTIONAL — when two people from one studio both apply.",
+      "partnerId": "partner-id",
+      "weShare": ["Shared tools", "Shared studio framing"],
+      "ILeadWith": ["What makes THIS person sound like themselves"],
+      "TheyLeadWith": ["What the partner leads with"],
+      "neverConflate": ["Tenure numbers", "Specialty that belongs only to one"]
+    },
+    "registers": {
+      "application": "../<id>/resume-source.json#voice",
+      "socialPersonal": "(optional socials format-manifest voice path)",
+      "socialStudio": "(optional studio marketing voice path)",
+      "discordVisual": "(optional bot STYLE-SPEC path)",
+      "networkRegistry": "registry.json",
+      "publicCard": "characters/humans/<id>.md"
+    },
+    "emojiPreferences": {
+      "_note": "Social/Discord only — never on ATS resume PDFs.",
+      "primary": [],
+      "avoidOnProfessional": ["bot faces as applicant identity", "custom Discord emoji IDs"]
+    },
+    "sampleLines": {
+      "coverLetterOpen": "Example opening in their real voice.",
+      "coverLetterClose": "Example close.",
+      "resumeSummaryFlavor": "How a summary line should feel."
+    }
+  }
+}

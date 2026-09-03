@@ -1,0 +1,360 @@
+{
+  "_meta": {
+    "description": "Writing-register map. Deep content lives in owning repos; this file is the index.",
+    "updated": "2026-09-03",
+    "docs": {
+      "registers": "docs/REGISTERS.md",
+      "protocol": "docs/PROTOCOL.md",
+      "roadmap": "docs/ROADMAP.md",
+      "overview": "docs/OVERVIEW.md",
+      "publicLocalSplit": "docs/PUBLIC-LOCAL-SPLIT.md",
+      "product": "docs/PRODUCT.md"
+    }
+  },
+  "registers": {
+    "application": {
+      "purpose": "Resume + cover letter prose",
+      "ssotPattern": "pdf-designer/storage/<user>/resume-source.json#voice"
+    },
+    "character": {
+      "purpose": "Personality, partner contrast, emoji prefs, register pointers",
+      "ssotPattern": "pdf-designer/storage/users/<user>.json#characterVoice"
+    },
+    "mission": {
+      "purpose": "Owner mission / research spine (optional)",
+      "ssotPattern": "pdf-designer/storage/<user>/resume-source.json#mission"
+    },
+    "studioResume": {
+      "purpose": "Studio capability or games applications",
+      "ssotPattern": "pdf-designer/storage/profiles/{studio-resume|martian-resume}.json#voice"
+    },
+    "socialMarketing": {
+      "purpose": "Patreon / Discord / news brand posts",
+      "ssotPattern": "socials/content/<brand>/format-manifest.json"
+    },
+    "botGreeter": {
+      "purpose": "Join-welcome embed prose (app bot user)",
+      "ssotPattern": "{bot}/content/greeting.md"
+    },
+    "discordVisual": {
+      "purpose": "Embed chrome, custom emoji IDs, layout — not join prose",
+      "ssotPattern": "{bot}/docs/STYLE-SPEC.md + resources/assets.json"
+    },
+    "agencyAudit": {
+      "purpose": "Site-QA character personality",
+      "ssotPattern": "agency/agents/<Name>.md"
+    },
+    "agencyStudioShared": {
+      "purpose": "Shared loft attributes for all agency agents",
+      "ssotPattern": "agency/docs/STUDIO-VOICE.md"
+    },
+    "agencyDiscordChat": {
+      "purpose": "Discord agency-channel posters",
+      "ssotPattern": "{bot}/resources/agency-profiles.json + agent chatVoice"
+    },
+    "gameSecurityChat": {
+      "purpose": "Player-facing game security / triage Discord voice",
+      "ssotPattern": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
+    },
+    "signalTone": {
+      "purpose": "NEOPHI Signal Crew in-character speaking tone",
+      "ssotPattern": "characters/neophi/<id>.md",
+      "canon": "neophi/src/assets/data/characters.md",
+      "notThese": ["applicant voice", "studio we", "Agency loft chatVoice", "bot greeter"]
+    }
+  },
+  "characters": [
+    {
+      "id": "jenni",
+      "family": "human",
+      "displayName": "Jenni",
+      "aliases": ["jenninexus", "jennifer", "jen"],
+      "card": "characters/humans/jenni.md",
+      "registers": {
+        "character": "pdf-designer/storage/users/jenni.json#characterVoice",
+        "application": "pdf-designer/storage/jenni/resume-source.json#voice",
+        "socialMarketing": "socials/content/jenninexus/format-manifest.json#patreon_format.voice",
+        "socialStudio": "socials/content/martiangames/format-manifest.json#patreon_format.voice",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md"
+      },
+      "socialPostingPrefs": "characters/humans/jenni.md § Social posting style — prefer 'Hey friends'; warm product names; not Hey crew",
+      "notThese": ["agency agents", "studio we on solo applications", "Vidette as Jenni"]
+    },
+    {
+      "id": "shade",
+      "family": "human",
+      "displayName": "Shade",
+      "aliases": ["synephi"],
+      "card": "characters/humans/shade.md",
+      "defaultTrack": "ai",
+      "registers": {
+        "character": "pdf-designer/storage/users/shade.json#characterVoice",
+        "application": "pdf-designer/storage/shade/resume-source.json#voice",
+        "mission": "pdf-designer/storage/shade/resume-source.json#mission",
+        "socialMarketing": "socials/content/martiangames/format-manifest.json#patreon_format.voice",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md"
+      },
+      "notThese": ["JN hearts / Vidette as applicant", "Default rewritten as games CV"]
+    },
+    {
+      "id": "brand-jenninexus",
+      "family": "brand",
+      "displayName": "JenniNexus",
+      "card": "characters/brands/jenninexus.md",
+      "registers": {
+        "socialMarketing": "socials/content/jenninexus/format-manifest.json",
+        "botGreeter": "{bot}/content/greeting.md",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md"
+      },
+      "relatedBots": ["bot-jenni"]
+    },
+    {
+      "id": "brand-martiangames",
+      "family": "brand",
+      "displayName": "Martian Games",
+      "card": "characters/brands/martiangames.md",
+      "registers": {
+        "socialMarketing": "socials/content/martiangames/format-manifest.json",
+        "botGreeter": "{bot}/content/greeting.md",
+        "studioResumeCapabilities": "pdf-designer/storage/profiles/studio-resume.json#voice",
+        "studioResumeGames": "pdf-designer/storage/profiles/martian-resume.json#voice",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md",
+        "gameSecurityChat": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
+      },
+      "relatedOps": ["gub"],
+      "relatedBots": ["bot-martian"]
+    },
+    {
+      "id": "brand-neophi",
+      "family": "brand",
+      "displayName": "NEOPHI",
+      "aliases": ["neophi", "signal-crew", "plur"],
+      "card": "characters/brands/neophi.md",
+      "registers": {
+        "characterCanon": "neophi/src/assets/data/characters.md",
+        "signalTone": "characters/neophi/",
+        "siteDeck": "https://neophi.world/?character=nyx#gallery"
+      },
+      "relatedCharacters": ["neophi-nyx", "neophi-zara", "neophi-kai", "neophi-luna", "neophi-orion", "neophi-phoenix"],
+      "notThese": ["applicant voice", "studio we", "Agency loft chatVoice", "bot greeter"],
+      "lastReviewed": "2026-09-03"
+    },
+    {
+      "id": "neophi-nyx",
+      "family": "neophi",
+      "displayName": "Nyx (NEOPHI)",
+      "aliases": ["nyx", "signal-01"],
+      "card": "characters/neophi/nyx.md",
+      "registers": {
+        "signalTone": "characters/neophi/nyx.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#nyx",
+        "siteDeck": "https://neophi.world/?character=nyx#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "neophi-zara",
+      "family": "neophi",
+      "displayName": "Zara (NEOPHI)",
+      "aliases": ["zara", "signal-02"],
+      "card": "characters/neophi/zara.md",
+      "registers": {
+        "signalTone": "characters/neophi/zara.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#zara",
+        "siteDeck": "https://neophi.world/?character=zara#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "neophi-kai",
+      "family": "neophi",
+      "displayName": "Kai (NEOPHI)",
+      "aliases": ["kai", "signal-03"],
+      "card": "characters/neophi/kai.md",
+      "registers": {
+        "signalTone": "characters/neophi/kai.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#kai",
+        "siteDeck": "https://neophi.world/?character=kai#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "neophi-luna",
+      "family": "neophi",
+      "displayName": "Luna (NEOPHI)",
+      "aliases": ["luna", "signal-04"],
+      "card": "characters/neophi/luna.md",
+      "registers": {
+        "signalTone": "characters/neophi/luna.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#luna",
+        "siteDeck": "https://neophi.world/?character=luna#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "neophi-orion",
+      "family": "neophi",
+      "displayName": "Orion (NEOPHI)",
+      "aliases": ["orion", "signal-05"],
+      "card": "characters/neophi/orion.md",
+      "registers": {
+        "signalTone": "characters/neophi/orion.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#orion",
+        "siteDeck": "https://neophi.world/?character=orion#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "neophi-phoenix",
+      "family": "neophi",
+      "displayName": "Phoenix (NEOPHI)",
+      "aliases": ["phoenix", "signal-06"],
+      "card": "characters/neophi/phoenix.md",
+      "registers": {
+        "signalTone": "characters/neophi/phoenix.md",
+        "characterCanon": "neophi/src/assets/data/characters.md#phoenix",
+        "siteDeck": "https://neophi.world/?character=phoenix#gallery"
+      },
+      "relatedBrand": "brand-neophi"
+    },
+    {
+      "id": "bot-jenni",
+      "family": "bot",
+      "displayName": "Community bot (JN face)",
+      "aliases": ["jenni-bot", "jennibot"],
+      "card": "characters/bots/README.md",
+      "registers": {
+        "botGreeter": "{bot}/content/greeting.md",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json"
+      },
+      "notThese": ["human characterVoice", "Patreon long-form", "ops triage"]
+    },
+    {
+      "id": "bot-martian",
+      "family": "bot",
+      "displayName": "Community bot (MG face)",
+      "aliases": ["martian-bot", "martianbot"],
+      "card": "characters/bots/README.md",
+      "registers": {
+        "botGreeter": "{bot}/content/greeting.md",
+        "discordVisual": "{bot}/docs/STYLE-SPEC.md"
+      },
+      "notThese": ["Agency loft chat", "ops persona"],
+      "relatedAgents": ["mars-auri", "mars-vyra"]
+    },
+    {
+      "id": "mars-auri",
+      "family": "agent",
+      "displayName": "Auri (Mars twin)",
+      "aliases": ["auri", "agent-mars-1"],
+      "card": "characters/agents/mars-auri.md",
+      "twinOf": "mars-vyra",
+      "registers": {
+        "discordVisual": "{bot}/resources/assets.json#agentVisualProfiles.mars-auri"
+      },
+      "notThese": ["Agency loft", "applicant voice"]
+    },
+    {
+      "id": "mars-vyra",
+      "family": "agent",
+      "displayName": "Vyra (Mars twin)",
+      "aliases": ["vyra", "agent-mars-2"],
+      "card": "characters/agents/mars-vyra.md",
+      "twinOf": "mars-auri",
+      "registers": {
+        "discordVisual": "{bot}/resources/assets.json#agentVisualProfiles.mars-vyra"
+      },
+      "notThese": ["Agency loft", "applicant voice"]
+    },
+    {
+      "id": "gub",
+      "family": "ops",
+      "displayName": "Sergeant Gub (game security)",
+      "aliases": ["omni", "sergeant gub", "featurama"],
+      "card": "characters/ops/gub.md",
+      "registers": {
+        "gameSecurityChat": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
+      },
+      "notThese": [
+        "human characterVoice / application vault",
+        "agency loft agents",
+        "brand socialMarketing emoji voice",
+        "bot greeter as Gub"
+      ]
+    },
+    {
+      "id": "vidette",
+      "family": "agency",
+      "displayName": "Vidette",
+      "card": "characters/agency/README.md",
+      "registers": {
+        "agencyAudit": "agency/agents/Vidette.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[vidette]"
+      }
+    },
+    {
+      "id": "bloggie",
+      "family": "agency",
+      "displayName": "Bloggie",
+      "registers": {
+        "agencyAudit": "agency/agents/Bloggie.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[bloggie]"
+      }
+    },
+    {
+      "id": "graphviz",
+      "family": "agency",
+      "displayName": "GraphViz",
+      "registers": {
+        "agencyAudit": "agency/agents/GraphViz.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[graphviz]"
+      }
+    },
+    {
+      "id": "gamergirl",
+      "family": "agency",
+      "displayName": "GamerGirl",
+      "registers": {
+        "agencyAudit": "agency/agents/GamerGirl.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[gamergirl]"
+      }
+    },
+    {
+      "id": "divinedesign",
+      "family": "agency",
+      "displayName": "DivineDesign",
+      "registers": {
+        "agencyAudit": "agency/agents/DivineDesign.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[divinedesign]"
+      }
+    },
+    {
+      "id": "metrica",
+      "family": "agency",
+      "displayName": "Metrica",
+      "registers": {
+        "agencyAudit": "agency/agents/Metrica.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[metrica]"
+      }
+    },
+    {
+      "id": "vixel",
+      "family": "agency",
+      "displayName": "Vixel",
+      "registers": {
+        "agencyAudit": "agency/agents/Vixel.md",
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "agencyDiscordChat": "{bot}/resources/agency-profiles.json#profiles[vixel]"
+      }
+    }
+  ]
+}
