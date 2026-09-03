@@ -1,6 +1,7 @@
 # voice-seed roadmap
 
-Session handoff: [`../Plans/_active/`](../Plans/_active/) (replaces `dev-log-sego.yaml`).
+Session handoff: [`../Plans/_active/`](../Plans/_active/) (carryover) · [`../Plans/_completed/`](../Plans/_completed/) (done) + this file. `/jen/roadmap`
+reads here. Do not recreate `dev-log-sego.yaml` (archived under gitignored `private/archive/`).
 
 ## Public seed
 
@@ -28,9 +29,11 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
 
 - Agency loft listener + slash desks live on the consuming JN bot (`agencyDiscordChat`).
 - socials previewer + marketing drafts use **`socialMarketing`** only.
-- **2026-09-03:** public-seed leak scrub — relative `ssotPattern`, PROTOCOL Flow C,
-  Handshake cards moved to local Handshake hub `Voice/`. Bot runtime stays `{bot}/`
-  relative; no GitHub URL for a bot-seed remote that does not exist yet.
+- **2026-09-03:** public-seed leak scrub, then orphan history + GitHub Public.
+  Handshake cards live in the local Handshake hub `Voice/` only.
+- **2026-09-03:** retired repo-root `dev-log-sego.yaml`. Live handoff is `Plans/` + this file.
+  Frozen copy: gitignored `private/archive/dev-log-sego.yaml` (two COMPLETED 2026-07-16
+  notes). Remaining follow-ups are in Next below.
 
 ## Next — bot + agency customization
 
@@ -51,10 +54,13 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
 
 | Work | Owner |
 |---|---|
+| Agency pairing GETTING-STARTED push | **agency** repo (this map is already public) |
 | Agency pin + webhook smoke | socials + consuming bot |
 | MessageCreate keyword MVP | consuming bot |
 | Brand Discord still confirm-before-post | socials policy |
-| JN `/products#voice-seed` free card | product-design + jenninexus.com — after public |
+| JN `/products#voice-seed` free card | product-design + jenninexus.com |
+| MG `format-manifest` studio-we depth (same pattern as JN `voice_guide`) | socials — when MG marketing needs it |
+| Optional `/voice-design agency` verify-sample via socials `:8777` | socials + this command |
 
 ## Non-goals
 

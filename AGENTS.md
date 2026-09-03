@@ -98,7 +98,7 @@ if the task crosses registers.
 | `characters/ops/` | Game security voices |
 | `templates/` | Seed shapes for new voices |
 | `.claude/commands/voice-design.md` | Repo-local procedure |
-| `Plans/` | Session handoff (replaces a local sego yaml) |
+| `Plans/_active/` · `Plans/_completed/` | Session handoff + [`docs/ROADMAP.md`](docs/ROADMAP.md). No sego yaml. |
 
 ## Related
 

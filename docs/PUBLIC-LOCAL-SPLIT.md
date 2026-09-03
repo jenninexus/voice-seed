@@ -15,7 +15,7 @@ useful without this repo.
 - `characters/agency/` — pointers to Agency prose, not a second SSOT
 - `templates/agent-chatVoice.seed.md` · `templates/character-voice.seed.json`
 - `AGENTS.md` · `README.md` — no machine-absolute disks, no emails, no legal names
-- `Plans/` — session handoff (clone-safe; replaces a local sego yaml)
+- `Plans/_active/` · `Plans/_completed/` — clone-safe session handoff. `/jen/roadmap` → [`docs/ROADMAP.md`](ROADMAP.md)
 - Fictional public-safe cards (e.g. NEOPHI Signal Crew) if they stay pointer-or-in-character with no private URLs
 
 ## Keep local / strip before public
@@ -28,7 +28,7 @@ Never ship these on a public `main`:
 | Human PII | Legal names, personal emails, operator-platform identity |
 | Studio-only registers | Handshake / investor / collab cards — Handshake hub `Voice/` only, never this repo |
 | Secrets | `.env`, webhooks, vault claims, analytics IDs |
-| Session logs | `dev-log-*.yaml` (already gitignored) |
+| Session logs | `dev-log-*.yaml` — do not recreate at repo root; frozen in gitignored `private/archive/` |
 | Studio overlay | `private/` (gitignored) |
 
 Human personality and application voice stay in **pdf-designer** gitignored vaults.
@@ -65,3 +65,5 @@ Run from the repo root on **tracked** files (exclude `private/`, `node_modules/`
 - [x] `git log` on public `main` is a single snapshot (orphan rewrite 2026-09-03)
 
 Keep the belts in `.gitignore`. Do not put Handshake / investor / collab cards back.
+
+Local `backup/pre-public-*` branches are recovery-only on this disk. Never push them — `origin` must stay the orphan snapshot only.
