@@ -6,7 +6,8 @@ this page + `/voice-design`.
 Human-facing overview: [`README.md`](README.md). Register rules:
 [`docs/REGISTERS.md`](docs/REGISTERS.md). Cross-repo flow:
 [`docs/PROTOCOL.md`](docs/PROTOCOL.md). Clone contract:
-[`docs/PUBLIC-LOCAL-SPLIT.md`](docs/PUBLIC-LOCAL-SPLIT.md).
+[`docs/PUBLIC-LOCAL-SPLIT.md`](docs/PUBLIC-LOCAL-SPLIT.md). Spoken voice (TTS, cloning)
+is out of scope — boundary and rules: [`docs/SPOKEN-VOICE.md`](docs/SPOKEN-VOICE.md).
 
 ## What this repo is
 
