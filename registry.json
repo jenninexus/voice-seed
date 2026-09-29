@@ -1,7 +1,9 @@
 {
   "_meta": {
     "description": "Writing-register map. Deep content lives in owning repos; this file is the index.",
-    "updated": "2026-09-03",
+    "updated": "2026-09-28",
+    "bots": ["jenni-bot", "martian-bot"],
+    "check": "node scripts/check-registry.mjs",
     "docs": {
       "registers": "docs/REGISTERS.md",
       "protocol": "docs/PROTOCOL.md",
@@ -50,7 +52,7 @@
     },
     "agencyDiscordChat": {
       "purpose": "Discord agency-channel posters",
-      "ssotPattern": "{bot}/resources/agency-profiles.json + agent chatVoice"
+      "ssotPattern": "jenni-bot/resources/agency-profiles.json + agent chatVoice"
     },
     "gameSecurityChat": {
       "purpose": "Player-facing game security / triage Discord voice",
@@ -228,7 +230,7 @@
       "registers": {
         "botGreeter": "{bot}/content/greeting.md",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
-        "agencyDiscordChat": "{bot}/resources/agency-profiles.json"
+        "agencyDiscordChat": "jenni-bot/resources/agency-profiles.json"
       },
       "notThese": ["human characterVoice", "Patreon long-form", "ops triage"]
     },
@@ -253,7 +255,7 @@
       "card": "characters/agents/mars-auri.md",
       "twinOf": "mars-vyra",
       "registers": {
-        "discordVisual": "{bot}/resources/assets.json#agentVisualProfiles.mars-auri"
+        "discordVisual": "martian-bot/resources/assets.json#agentVisualProfiles.mars-auri"
       },
       "notThese": ["Agency loft", "applicant voice"]
     },
@@ -265,7 +267,7 @@
       "card": "characters/agents/mars-vyra.md",
       "twinOf": "mars-auri",
       "registers": {
-        "discordVisual": "{bot}/resources/assets.json#agentVisualProfiles.mars-vyra"
+        "discordVisual": "martian-bot/resources/assets.json#agentVisualProfiles.mars-vyra"
       },
       "notThese": ["Agency loft", "applicant voice"]
     },

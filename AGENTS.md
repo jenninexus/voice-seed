@@ -40,6 +40,18 @@ One command, one file: [`.claude/commands/voice-design.md`](.claude/commands/voi
 it as `/voice-design`; any other agent (Codex, Cursor, Grok) runs it by reading that file and following it. There
 are no per-agent copies — generated `.codex/` / `.agents/` wrappers are gitignored.
 
+## Consuming this map from another repo
+
+Clone voice-seed **beside** your repo and point at it relatively — never a drive path:
+
+```markdown
+| Voice map | `../voice-seed/registry.json` (sibling clone of [voice-seed](https://github.com/jenninexus/voice-seed)) · `/voice-design` |
+```
+
+After changing a path in `registry.json` (or moving a file in a consumer repo), run
+`node scripts/check-registry.mjs` from this repo: it resolves every path against the sibling clones, reports
+broken ones, and skips repos you haven't cloned. Zero dependencies.
+
 ## First file to open
 
 [`registry.json`](registry.json), then [`docs/REGISTERS.md`](docs/REGISTERS.md)
