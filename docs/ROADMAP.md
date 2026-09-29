@@ -1,7 +1,7 @@
 # voice-seed roadmap
 
 This file is the public roadmap. Session plans are local-only (`Plans/`, gitignored). `/jen/roadmap`
-reads here. Do not recreate `dev-log-sego.yaml` (archived under gitignored `private/archive/`).
+reads here. Do not recreate `dev-log-sego.yaml` (retired; no copy is kept).
 
 ## Public seed
 
@@ -32,8 +32,11 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
 - **2026-09-03:** public-seed leak scrub, then orphan history + GitHub Public.
   Handshake cards live in the local Handshake hub `Voice/` only.
 - **2026-09-03:** retired repo-root `dev-log-sego.yaml`. Live handoff is `Plans/` + this file.
-  Frozen copy: gitignored `private/archive/dev-log-sego.yaml` (two COMPLETED 2026-07-16
-  notes). Remaining follow-ups are in Next below.
+  Remaining follow-ups are in Next below.
+- **2026-09-28:** one agent surface (`.claude/commands/voice-design.md`; generated `.codex/`/`.agents/`
+  gitignored), `Plans/` local-only, `private/` documented as the local-private convention
+  ([`PUBLIC-LOCAL-SPLIT.md`](PUBLIC-LOCAL-SPLIT.md)). Every pdf-designer path in the registry fixed
+  (`users/`, `vaults/`, `profiles/`). New [`SPOKEN-VOICE.md`](SPOKEN-VOICE.md): spoken-voice briefs + VoiceStudio.
 
 ## Next — bot + agency customization
 
