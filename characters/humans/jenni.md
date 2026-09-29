@@ -33,7 +33,7 @@ Register: **`socialMarketing`**. Prose SSOT: `socials/content/jenninexus/format-
 | Unicode hearts on Patreon/Meta | Discord APP emoji IDs on Patreon or webhooks |
 | First-person when it’s her face | Résumé voice · Agency loft · Vidette as Jenni |
 
-**Deep edit:** `pdf-designer/storage/users/jenni.json#characterVoice.socialPostingPrefs`  
+**Deep edit:** `pdf-designer/users/jenni.json#characterVoice.socialPostingPrefs`  
 **Route:** `/voice-design social jenninexus` · `/voice-design character jenni`.
 
 ---
@@ -42,8 +42,8 @@ Register: **`socialMarketing`**. Prose SSOT: `socials/content/jenninexus/format-
 
 | Register | Path |
 |---|---|
-| **character** | `pdf-designer/storage/users/jenni.json#characterVoice` |
-| **application** | `pdf-designer/storage/jenni/resume-source.json#voice` |
+| **character** | `pdf-designer/users/jenni.json#characterVoice` |
+| **application** | `pdf-designer/vaults/jenni.json#voice` |
 | **socialMarketing** | `socials/content/jenninexus/format-manifest.json#patreon_format.voice` |
 | **socialStudio** | `socials/content/martiangames/format-manifest.json#patreon_format.voice` |
 | **discordVisual** | `{bot}/docs/STYLE-SPEC.md` |

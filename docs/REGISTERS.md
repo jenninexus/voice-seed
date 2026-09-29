@@ -10,8 +10,8 @@ a résumé, or a cover letter starts sounding like Patreon.
 
 | ID | Purpose | “I” / “we” | SSOT (edit here) | Index card |
 |---|---|---|---|---|
-| `application` | Résumé + cover letter prose | Applicant as person | pdf-designer `storage/<user>/resume-source.json#voice` | [`../characters/humans/`](../characters/humans/) |
-| `character` | Personality, partner contrast, emoji prefs, register pointers | Person | pdf-designer `storage/users/<user>.json#characterVoice` | same |
+| `application` | Résumé + cover letter prose | Applicant as person | pdf-designer `vaults/<user>.json#voice` | [`../characters/humans/`](../characters/humans/) |
+| `character` | Personality, partner contrast, emoji prefs, register pointers | Person | pdf-designer `users/<user>.json#characterVoice` | same |
 | `mission` | Owner research / life’s-work spine | Person | pdf-designer vault `#mission` (optional) | [`../characters/humans/shade.md`](../characters/humans/shade.md) |
 | `studioResume` | Studio capability **or** games applications | Studio “we” | `studio-resume.json` · `martian-resume.json` | [`../characters/brands/martiangames.md`](../characters/brands/martiangames.md) |
 | `socialMarketing` | Patreon / Discord brand posts | Brand or creator | socials `content/<brand>/format-manifest.json` | [`../characters/brands/`](../characters/brands/) |

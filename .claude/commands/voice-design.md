@@ -6,7 +6,10 @@ argument-hint: "[character|application|social|bot|agency|ops|neophi|signal|looku
 # /voice · /voice-design — Network Voice Router
 
 ⭐ **THIS FILE IS THE SSOT** for the repo-local command. Global twins should
-point here, not duplicate protocol.
+point here, not duplicate protocol. It works on a fresh public clone as-is.
+
+**Local overlay:** if `private/voice-design.local.md` exists (gitignored studio file), read it too and
+apply its extra subcommands. A public clone has no such file; skip this line.
 
 **Shorthand:** `/voice` == `/voice-design`.
 
@@ -92,7 +95,7 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 |---|---|
 | Résumé → Patreon | Keep `socialMarketing`; tweak format-manifest |
 | Agency emoji → ATS PDF | Application register — no Discord emoji |
-| Solo app as studio “we” | Applicant vs studio brand |
+| Unscoped studio “we” in a solo app | Keep the applicant's own claims in “I”; allow “we / our studio” only for explicitly named, source-backed studio capability |
 | Agency → `characterVoice` | Agency stays in agency/ + bot catalogue |
 | Patreon long-form → greeter | Greeter stays short in `greeting.md` |
 | Agency loft → brand announcements | Loft channel only |
@@ -110,7 +113,7 @@ Compact card from `registry.json` + matching `characters/**` — paths only.
 ### `character <jenni|shade>`
 
 1. Register = `character`
-2. Open `pdf-designer/storage/users/<id>.json` → **`#characterVoice`**
+2. Open `pdf-designer/users/<id>.json` → **`#characterVoice`**
 3. Card `characters/humans/<id>.md` stays a **short public pointer** — deep edit goes in the JSON
 4. Remind: this is *who they are*, **not** how a résumé sounds (that is `application`)
 
@@ -118,8 +121,8 @@ Compact card from `registry.json` + matching `characters/**` — paths only.
 
 | Edit… | File |
 |---|---|
-| Personality, partner contrast, emoji prefs, register map | `pdf-designer/storage/users/<id>.json#characterVoice` |
-| Tone, `signatureMoves`, `avoid`, `leadIdentityByTrack` | `pdf-designer/storage/<id>/resume-source.json#voice` |
+| Personality, partner contrast, emoji prefs, register map | `pdf-designer/users/<id>.json#characterVoice` |
+| Tone, `signatureMoves`, `avoid`, `leadIdentityByTrack` | `pdf-designer/vaults/<id>.json#voice` |
 
 1. Register = `application`
 2. **Shade:** lead identity changes by track — read `voice.leadIdentityByTrack` first.
@@ -185,8 +188,8 @@ No id → list six cards + `characters/brands/neophi.md`.
 | `/gub` | Live security ops |
 
 > **"Voice" is overloaded.** This command owns **written register** (how prose sounds).
-> Speech audio and mouth animation are other tools.
+> Spoken voice (TTS, cloning) is out of scope — boundary, rules and tools: [`docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md).
 
 ## Repo docs
 
-- `AGENTS.md` · `docs/REGISTERS.md` · `docs/PROTOCOL.md` · `docs/ROADMAP.md` · `docs/OVERVIEW.md` · `docs/PUBLIC-LOCAL-SPLIT.md`
+- `AGENTS.md` · `docs/REGISTERS.md` · `docs/PROTOCOL.md` · `docs/ROADMAP.md` · `docs/OVERVIEW.md` · `docs/PUBLIC-LOCAL-SPLIT.md` · `docs/SPOKEN-VOICE.md`

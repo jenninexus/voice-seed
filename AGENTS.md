@@ -19,7 +19,7 @@ drafts here.
 
 | Register | Owns | Edit here? |
 |---|---|---|
-| `character` | Who they are (personality, contrast) | No — pointer only → `pdf-designer/storage/users/<id>.json#characterVoice` |
+| `character` | Who they are (personality, contrast) | No — pointer only → `pdf-designer/users/<id>.json#characterVoice` |
 | `application` | Résumé / cover-letter prose | No → vault `#voice` (+ optional `#mission`) |
 | `socialMarketing` | Patreon / Discord / news | No → `socials/content/<brand>/format-manifest.json` |
 | `botGreeter` | Join-welcome prose | No → `{bot}/content/greeting.md` |
@@ -35,6 +35,10 @@ drafts here.
 |---|---|---|
 | `/voice-design` | This repo (`.claude/commands/`) | Resolve register → open SSOT → edit safely |
 | `/make-resume` | `pdf-designer` | Application register (after loading character) |
+
+One command, one file: [`.claude/commands/voice-design.md`](.claude/commands/voice-design.md). Claude Code loads
+it as `/voice-design`; any other agent (Codex, Cursor, Grok) runs it by reading that file and following it. There
+are no per-agent copies — generated `.codex/` / `.agents/` wrappers are gitignored.
 
 ## First file to open
 
@@ -99,7 +103,7 @@ if the task crosses registers.
 | `characters/ops/` | Game security voices |
 | `templates/` | Seed shapes for new voices |
 | `.claude/commands/voice-design.md` | Repo-local procedure |
-| `Plans/_active/` · `Plans/_completed/` | Session handoff + [`docs/ROADMAP.md`](docs/ROADMAP.md). No sego yaml. |
+| [`docs/ROADMAP.md`](docs/ROADMAP.md) | Public roadmap. Session plans are local (`Plans/`, gitignored). No sego yaml. |
 
 ## Related
 

@@ -34,12 +34,12 @@ they must **not** share the same opening energy or specialty tell.
 | Tenure trap | **15 years** (joined 2011) | **25 years** (founded 2000) |
 | Social register | JN first-person “I” + hearts | MG studio “we / Shade & Jenni” (marketing) — solo apps stay “I, Shade” |
 
-**Edit:** private SSOTs under pdf-designer `storage/` — see
+**Edit:** private SSOTs in pdf-designer `users/` and `vaults/` (gitignored there) — see
 [`../characters/humans/jenni.md`](../characters/humans/jenni.md) and
 [`shade.md`](../characters/humans/shade.md).
 
 Reference self-descriptions (private, local): e.g.
-`pdf-designer/storage/shade/refrence/Self-Described.md` — use to refresh
+`pdf-designer/resumes/<id>/resources/references/Self-Described.md` — use to refresh
 `characterVoice`, never commit into this repo.
 
 ---

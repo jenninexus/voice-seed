@@ -1,6 +1,6 @@
 # voice-seed roadmap
 
-Session handoff: [`../Plans/_active/`](../Plans/_active/) (carryover) · [`../Plans/_completed/`](../Plans/_completed/) (done) + this file. `/jen/roadmap`
+This file is the public roadmap. Session plans are local-only (`Plans/`, gitignored). `/jen/roadmap`
 reads here. Do not recreate `dev-log-sego.yaml` (archived under gitignored `private/archive/`).
 
 ## Public seed

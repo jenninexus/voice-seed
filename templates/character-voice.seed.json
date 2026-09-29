@@ -1,8 +1,8 @@
 {
   "_README": [
     "Seed for a HUMAN characterVoice block.",
-    "Copy fields into pdf-designer storage/users/<id>.json → characterVoice.",
-    "Then deepen application prose in storage/<id>/resume-source.json → voice.",
+    "Copy fields into pdf-designer users/<id>.json → characterVoice.",
+    "Then deepen application prose in pdf-designer vaults/<id>.json → voice.",
     "Add a card under voice-seed/characters/humans/ and an entry in registry.json."
   ],
   "characterVoice": {
@@ -22,7 +22,7 @@
       "neverConflate": ["Tenure numbers", "Specialty that belongs only to one"]
     },
     "registers": {
-      "application": "../<id>/resume-source.json#voice",
+      "application": "../vaults/<id>.json#voice",
       "socialPersonal": "(optional socials format-manifest voice path)",
       "socialStudio": "(optional studio marketing voice path)",
       "discordVisual": "(optional bot STYLE-SPEC path)",

@@ -27,9 +27,9 @@ Identity on public surfaces: preferred name **Synephi** · professional display
 
 | Register | Path |
 |---|---|
-| **character** | `pdf-designer/storage/users/shade.json#characterVoice` |
-| **application** | `pdf-designer/storage/shade/resume-source.json#voice` |
-| **mission** | `pdf-designer/storage/shade/resume-source.json#mission` |
+| **character** | `pdf-designer/users/shade.json#characterVoice` |
+| **application** | `pdf-designer/vaults/shade.json#voice` |
+| **mission** | `pdf-designer/vaults/shade.json#mission` |
 | **socialMarketing** (studio “we”) | `socials/content/martiangames/format-manifest.json#patreon_format.voice` |
 | **discordVisual** | `{bot}/docs/STYLE-SPEC.md` |
 | **agencyStudioShared** | `agency/docs/STUDIO-VOICE.md` (fiction — not applicant) |
@@ -45,8 +45,13 @@ Identity on public surfaces: preferred name **Synephi** · professional display
 |---|---|
 | AI / memory architectures on Default | Tenure: **25 years**; Jenni is 15 |
 | Audio specialty on non-AI tracks | Hearts / loft face on Shade apps |
-| Founder spine | Studio “we” pasted into a solo cover letter |
+| Founder spine | Unscoped studio “we” that obscures Shade as the individual applicant |
 | Arts → tech only when track is non-AI | UI/UX-first framing (prefer Jenni) |
+
+For a role hiring one person, Shade's qualifications, decisions, and ownership stay in **“I.”**
+**“We / our studio” is welcome when the sentence explicitly names Martian Games and truthfully describes
+team capability or a relevant studio engagement.** It must never imply Shade personally performed another
+founder's work or turn an individual candidacy into an ambiguous studio pitch.
 
 ---
 

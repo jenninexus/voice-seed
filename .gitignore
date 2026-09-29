@@ -7,10 +7,18 @@
 credentials.json
 **/userdata.db
 
-# Retired session log. Live handoff is Plans/_active/ + Plans/_completed/ + docs/ROADMAP.md (/jen/roadmap).
-# Do not recreate this file at the repo root. Frozen copy: private/archive/dev-log-sego.yaml
+# Local-only working state. Public roadmap = docs/ROADMAP.md.
+# Session plans are studio work notes, not part of the clone (see docs/PUBLIC-LOCAL-SPLIT.md).
+Plans/
+# Retired session log — do not recreate at the repo root.
 dev-log-sego.yaml
 dev-log-*.yaml
+
+# Agent runtimes: ONE tracked command lives in .claude/commands/. Codex/Grok/Cursor read AGENTS.md,
+# which points there. Per-machine generated wrappers never get committed.
+.codex/
+.agents/
+.claude/settings.local.json
 
 # Localized command/doc overlays (tracked .md stays shareable)
 *.local.md
@@ -27,9 +35,10 @@ Desktop.ini
 *.code-workspace
 .cursor/
 
+# The ONE local-private folder (studio overlay, consumer audit, archives). Visible on disk, never pushed.
+private/
 # Never mirror private vaults, contacts, or exports into this repo
 storage/
-private/
 notes/
 
 # Studio-only operator cards — Handshake / investor / collab never on GitHub

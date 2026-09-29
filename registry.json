@@ -14,19 +14,19 @@
   "registers": {
     "application": {
       "purpose": "Resume + cover letter prose",
-      "ssotPattern": "pdf-designer/storage/<user>/resume-source.json#voice"
+      "ssotPattern": "pdf-designer/vaults/<user>.json#voice"
     },
     "character": {
       "purpose": "Personality, partner contrast, emoji prefs, register pointers",
-      "ssotPattern": "pdf-designer/storage/users/<user>.json#characterVoice"
+      "ssotPattern": "pdf-designer/users/<user>.json#characterVoice"
     },
     "mission": {
       "purpose": "Owner mission / research spine (optional)",
-      "ssotPattern": "pdf-designer/storage/<user>/resume-source.json#mission"
+      "ssotPattern": "pdf-designer/vaults/<user>.json#mission"
     },
     "studioResume": {
       "purpose": "Studio capability or games applications",
-      "ssotPattern": "pdf-designer/storage/profiles/{studio-resume|martian-resume}.json#voice"
+      "ssotPattern": "pdf-designer/profiles/{studio-resume|martian-resume}.json#voice"
     },
     "socialMarketing": {
       "purpose": "Patreon / Discord / news brand posts",
@@ -71,8 +71,8 @@
       "aliases": ["jenninexus", "jennifer", "jen"],
       "card": "characters/humans/jenni.md",
       "registers": {
-        "character": "pdf-designer/storage/users/jenni.json#characterVoice",
-        "application": "pdf-designer/storage/jenni/resume-source.json#voice",
+        "character": "pdf-designer/users/jenni.json#characterVoice",
+        "application": "pdf-designer/vaults/jenni.json#voice",
         "socialMarketing": "socials/content/jenninexus/format-manifest.json#patreon_format.voice",
         "socialStudio": "socials/content/martiangames/format-manifest.json#patreon_format.voice",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
@@ -89,9 +89,9 @@
       "card": "characters/humans/shade.md",
       "defaultTrack": "ai",
       "registers": {
-        "character": "pdf-designer/storage/users/shade.json#characterVoice",
-        "application": "pdf-designer/storage/shade/resume-source.json#voice",
-        "mission": "pdf-designer/storage/shade/resume-source.json#mission",
+        "character": "pdf-designer/users/shade.json#characterVoice",
+        "application": "pdf-designer/vaults/shade.json#voice",
+        "mission": "pdf-designer/vaults/shade.json#mission",
         "socialMarketing": "socials/content/martiangames/format-manifest.json#patreon_format.voice",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
         "agencyStudioShared": "agency/docs/STUDIO-VOICE.md"
@@ -118,8 +118,8 @@
       "registers": {
         "socialMarketing": "socials/content/martiangames/format-manifest.json",
         "botGreeter": "{bot}/content/greeting.md",
-        "studioResumeCapabilities": "pdf-designer/storage/profiles/studio-resume.json#voice",
-        "studioResumeGames": "pdf-designer/storage/profiles/martian-resume.json#voice",
+        "studioResumeCapabilities": "pdf-designer/profiles/studio-resume.json#voice",
+        "studioResumeGames": "pdf-designer/profiles/martian-resume.json#voice",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
         "gameSecurityChat": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
       },

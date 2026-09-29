@@ -15,7 +15,9 @@ useful without this repo.
 - `characters/agency/` — pointers to Agency prose, not a second SSOT
 - `templates/agent-chatVoice.seed.md` · `templates/character-voice.seed.json`
 - `AGENTS.md` · `README.md` — no machine-absolute disks, no emails, no legal names
-- `Plans/_active/` · `Plans/_completed/` — clone-safe session handoff. `/jen/roadmap` → [`docs/ROADMAP.md`](ROADMAP.md)
+- `docs/ROADMAP.md` — the public roadmap (session plans are local, see below)
+- `docs/SPOKEN-VOICE.md` — spoken-voice boundary, how-to, and fork attribution for external TTS tools
+- `.claude/commands/voice-design.md` — the **one** command; other agents read it via `AGENTS.md`. `CLAUDE.md` is a pointer to `AGENTS.md`
 - Fictional public-safe cards (e.g. NEOPHI Signal Crew) if they stay pointer-or-in-character with no private URLs
 
 ## Keep local / strip before public
@@ -28,8 +30,10 @@ Never ship these on a public `main`:
 | Human PII | Legal names, personal emails, operator-platform identity |
 | Studio-only registers | Handshake / investor / collab cards — Handshake hub `Voice/` only, never this repo |
 | Secrets | `.env`, webhooks, vault claims, analytics IDs |
-| Session logs | `dev-log-*.yaml` — do not recreate at repo root; frozen in gitignored `private/archive/` |
-| Studio overlay | `private/` (gitignored) |
+| Session plans | `Plans/` (gitignored) — studio work notes; the clone gets `docs/ROADMAP.md` instead |
+| Session logs | `dev-log-*.yaml` — retired; do not recreate |
+| Generated agent wrappers | `.codex/`, `.agents/` (gitignored) — rebuilt per machine from the one command |
+| Studio overlay | `private/` (gitignored) — see below |
 
 Human personality and application voice stay in **pdf-designer** gitignored vaults.
 Brand marketing prose stays in **socials** format-manifests.
@@ -66,4 +70,20 @@ Run from the repo root on **tracked** files (exclude `private/`, `node_modules/`
 
 Keep the belts in `.gitignore`. Do not put Handshake / investor / collab cards back.
 
-Local `backup/pre-public-*` branches are recovery-only on this disk. Never push them — `origin` must stay the orphan snapshot only.
+The pre-public history is kept only as a local archive in `private/archive/2026-09-03-pre-public-overlay/`
+(there are no backup branches). `origin` stays the clean snapshot.
+
+## `private/` — the local-private convention
+
+One gitignored folder at the repo root, **visible** on disk (unlike a buried `storage/`), holds everything
+studio-only. A public clone simply doesn't have it and works the same.
+
+| Path | Role |
+|---|---|
+| `private/voice-design.local.md` | Extra `/voice-design` routes; the public command reads it when present |
+| `private/studio-voice.md` | Private registers (e.g. investor, creator-collab) |
+| `private/VOICE-CONSUMERS.md` | Audit of how sibling repos consume this map |
+| `private/archive/` | Frozen history, read-only |
+
+Never a second `.claude/` inside `private/` — overlays are plain files the one command loads.
+Any repo that wants the same split can copy this pattern: `private/` + a `*.local.md` overlay the public file reads.
