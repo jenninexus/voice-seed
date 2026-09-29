@@ -8,6 +8,7 @@
 // Placeholders (<user>, <brand>, <Name>, <id>) check the folder they sit in; `{bot}` expands to _meta.bots;
 // `{a|b}` checks each alternative; `file.json#a.b` checks that key path; `file.md#id` checks the id appears.
 // A sibling repo you haven't cloned is reported as skipped, not broken, so a fresh public clone passes.
+// Repos cloned elsewhere: list their parent folders in private/sibling-roots.txt (gitignored).
 // Zero dependencies (Node 18+). Exit 1 = at least one broken path.
 
 import { existsSync, readFileSync, statSync } from "node:fs";
@@ -16,6 +17,12 @@ import { fileURLToPath } from "node:url";
 
 const here = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const siblings = dirname(here);
+// Extra folders to look in for sibling repos (one per line) — gitignored, machine-specific.
+const rootsFile = join(here, "private", "sibling-roots.txt");
+const searchRoots = [siblings, ...(existsSync(rootsFile)
+  ? readFileSync(rootsFile, "utf8").split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith("#"))
+  : [])];
+const findRepo = (name) => searchRoots.map((r) => join(r, name)).find((p) => existsSync(p));
 const strict = process.argv.includes("--strict");
 const registry = JSON.parse(readFileSync(join(here, "registry.json"), "utf8"));
 const bots = registry._meta?.bots ?? ["jenni-bot", "martian-bot"];
@@ -46,11 +53,12 @@ function check(where, raw) {
   const [pathPart, anchor] = raw.split("#");
   for (const path of expand(pathPart)) {
     const repo = path.split("/")[0];
-    const base = LOCAL.includes(repo) ? here : siblings;
-    if (base === siblings && !existsSync(join(siblings, repo))) {
+    const repoDir = LOCAL.includes(repo) ? null : findRepo(repo);
+    if (!LOCAL.includes(repo) && !repoDir) {
       results.skipped.set(repo, (results.skipped.get(repo) ?? 0) + 1);
       continue;
     }
+    const base = repoDir ? dirname(repoDir) : here;
     const placeholder = path.search(/<[^>]+>/);
     const target = join(base, placeholder >= 0 ? path.slice(0, path.lastIndexOf("/", placeholder)) : path);
     let problem = null;

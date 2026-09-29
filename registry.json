@@ -144,6 +144,20 @@
       "lastReviewed": "2026-09-03"
     },
     {
+      "id": "brand-jerry",
+      "family": "brand",
+      "displayName": "Jerry VR",
+      "aliases": ["jerry", "jerry-vr"],
+      "card": "characters/brands/jerry.md",
+      "registers": {
+        "socialMarketing": "socials/content/jerry/format-manifest.json#discord_format.voice",
+        "clientDocs": "socials/content/jerry/format-manifest.json#google_doc_format.voice"
+      },
+      "relatedAgency": ["vixel"],
+      "notThese": ["studio we", "internal file paths or dev jargon", "Agency loft chatVoice"],
+      "lastReviewed": "2026-09-28"
+    },
+    {
       "id": "neophi-nyx",
       "family": "neophi",
       "displayName": "Nyx (NEOPHI)",
@@ -245,7 +259,8 @@
         "discordVisual": "{bot}/docs/STYLE-SPEC.md"
       },
       "notThese": ["Agency loft chat", "ops persona"],
-      "relatedAgents": ["mars-auri", "mars-vyra"]
+      "relatedAgents": ["mars-auri", "mars-vyra"],
+      "speaksFor": "Martian Games agency agents (the mg site's /mg-agents roster) via /voice-design; no Agency loft on MG"
     },
     {
       "id": "mars-auri",
@@ -270,6 +285,15 @@
         "discordVisual": "martian-bot/resources/assets.json#agentVisualProfiles.mars-vyra"
       },
       "notThese": ["Agency loft", "applicant voice"]
+    },
+    {
+      "id": "phaena",
+      "family": "agent",
+      "displayName": "Phaena",
+      "status": "art only — no voice defined yet",
+      "art": "character-designer/characters/mg/phaena/",
+      "todo": "Decide her role (MG agent or presenter?) and add a card under characters/agents/ before drafting in her voice.",
+      "lastReviewed": "2026-09-28"
     },
     {
       "id": "gub",
