@@ -45,9 +45,15 @@ This page marks the boundary so the two never blur.
    generate, keep the take you like as a saved voice. Or *Voice cloning* from a consenting speaker's clean clip.
    ⚠ Design mode hears **tags only**: gender, age, pitch, whisper, English accent. Texture words
    ("warm", "rasp") come back as *unmatched* and are dropped. Carry pace with the generation speed setting,
-   carry texture in how the script is written, and change the seed to audition a different speaker with the same tags.
+   carry texture in how the script is written.
    API save: `POST /profiles` (multipart form: `kind=design`, `vd_states` JSON, `instruct` tags, `seed`) on the
    local backend (default port 3900).
+   ⚠ **A saved design voice is its sample line.** On save, VoiceStudio renders the sample line (`ref_text`) once,
+   at a fixed preview seed rather than the profile's `seed`. Every later generation with that profile copies
+   that one clip. To audition a different speaker, change the sample line, delete the profile and save it again.
+   Changing `seed` does nothing. Measure the saved clip's loudness against your other voices: a quiet clip passes
+   VoiceStudio's blank-audio check but makes every line near-silent. Seen 2026-09-30 on VoiceStudio 0.5.6: one
+   sample line rendered at RMS ~600 against ~3,500 for the others. A new line fixed it.
 3. **Give it to agents.** VoiceStudio mounts an MCP server at `/mcp` on its local backend
    (`generate_speech`, `clone_voice`, `transcribe`, `list_voices`). Point your agent's MCP config at it and
    bind the saved voice per agent. The voice profile stays inside VoiceStudio's data folder — never in git.

@@ -37,6 +37,9 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
   gitignored), `Plans/` local-only, `private/` documented as the local-private convention
   ([`PUBLIC-LOCAL-SPLIT.md`](PUBLIC-LOCAL-SPLIT.md)). Every pdf-designer path in the registry fixed
   (`users/`, `vaults/`, `profiles/`). New [`SPOKEN-VOICE.md`](SPOKEN-VOICE.md): spoken-voice briefs + VoiceStudio.
+- **2026-09-30:** first VoiceStudio audition of the designed voices, run on the studio's GPU machine. The voices
+  are awaiting owner review. Lesson now in `SPOKEN-VOICE.md`: a saved design voice is fixed by its sample line,
+  not its seed.
 
 ## Next — bot + agency customization
 
