@@ -5,8 +5,8 @@
 
 | Register / layer | Path |
 |---|---|
-| Canon identity + Visual DNA | `neophi/src/assets/data/characters.md` |
-| Speaking tone (`signalTone`) | [`../neophi/`](../neophi/) — one card per crew member |
+| Canon identity + Visual DNA | `neophi/src/assets/data/characters.md` (private) |
+| Speaking tone (`signalTone`) | Studio-only — `private/neophi/<id>.md` (gitignored overlay; not in the public clone) |
 | Site profile deck | `https://neophi.world/?character={id}#gallery` |
 
 ## Brand tone (site + impersonal drafts)
@@ -16,19 +16,11 @@ Prefer “the Signal Crew” language over generic “AI girls.”
 
 ## In-character updates
 
-When drafting **as a specific crew member**:
+NEOPHI is a private set (planned series and collection). Per-character speaking cards are kept out of the
+public repo until the owner approves public copy. On a studio machine:
 
 ```
-/voice-design neophi nyx|zara|kai|luna|orion|phoenix
+/voice-design neophi <id>
 ```
 
-Open that card under `characters/neophi/`, keep Visual DNA locked to the canon file, use **Update hooks** + samples.
-
-| Signal | Card | Accent vibe |
-|--------|------|-------------|
-| 01 Nyx | [nyx.md](../neophi/nyx.md) | Violet stealth flirt |
-| 02 Zara | [zara.md](../neophi/zara.md) | Pink/teal soul workshop |
-| 03 Kai | [kai.md](../neophi/kai.md) | Teal honor strike |
-| 04 Luna | [luna.md](../neophi/luna.md) | Indigo quantum hush |
-| 05 Orion | [orion.md](../neophi/orion.md) | Aurora gravity wink |
-| 06 Phoenix | [phoenix.md](../neophi/phoenix.md) | Berry stage anthem |
+opens `private/neophi/<id>.md`. In a public clone that route has no card. Use the brand tone above.

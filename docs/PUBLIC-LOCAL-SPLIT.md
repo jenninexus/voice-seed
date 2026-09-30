@@ -18,7 +18,8 @@ useful without this repo.
 - `docs/ROADMAP.md` — the public roadmap (session plans are local, see below)
 - `docs/SPOKEN-VOICE.md` — spoken-voice boundary, how-to, and fork attribution for external TTS tools
 - `.claude/commands/voice-design.md` — the **one** command; other agents read it via `AGENTS.md`. `CLAUDE.md` is a pointer to `AGENTS.md`
-- Fictional public-safe cards (e.g. NEOPHI Signal Crew) if they stay pointer-or-in-character with no private URLs
+- Fictional public-safe cards if they stay pointer-or-in-character with no private URLs. NEOPHI is a private set:
+  only its brand card is public; the crew `signalTone` cards live in `private/neophi/` (moved 2026-09-30)
 
 ## Keep local / strip before public
 
@@ -83,6 +84,7 @@ studio-only. A public clone simply doesn't have it and works the same.
 | `private/voice-design.local.md` | Extra `/voice-design` routes; the public command reads it when present |
 | `private/studio-voice.md` | Private registers (e.g. investor, creator-collab) |
 | `private/VOICE-CONSUMERS.md` | Audit of how sibling repos consume this map |
+| `private/neophi/` | NEOPHI Signal Crew `signalTone` cards (private set; until a private cast repo owns them) |
 | `private/archive/` | Frozen history, read-only |
 
 Never a second `.claude/` inside `private/` — overlays are plain files the one command loads.

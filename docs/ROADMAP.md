@@ -39,7 +39,8 @@ Keep this repo a **thin map**. Deep work happens in owning SSOTs.
   (`users/`, `vaults/`, `profiles/`). New [`SPOKEN-VOICE.md`](SPOKEN-VOICE.md): spoken-voice briefs + VoiceStudio.
 - **2026-09-30:** first VoiceStudio audition of the designed voices, run on the studio's GPU machine. The voices
   are awaiting owner review. Lesson now in `SPOKEN-VOICE.md`: a saved design voice is fixed by its sample line,
-  not its seed.
+  not its seed. NEOPHI is a private set: only its brand card is public now. The crew `signalTone` cards moved to
+  the studio-only `private/neophi/` overlay.
 
 ## Next — bot + agency customization
 

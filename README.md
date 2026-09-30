@@ -62,7 +62,7 @@ git clone https://github.com/jenninexus/voice-seed.git
 | **Bots** | Greeter + chrome | `{bot}/content/greeting.md` + STYLE-SPEC |
 | **Agency agents** | Vidette, Bloggie, … | `agency/agents/*.md` + bot catalogue |
 | **Ops** | Game security triage | Game wiki persona — card [`characters/ops/gub.md`](characters/ops/gub.md) |
-| **NEOPHI** | Signal Crew in-character | [`characters/neophi/`](characters/neophi/) (`signalTone`) |
+| **NEOPHI** | Brand tone (crew cards are studio-only) | [`characters/brands/neophi.md`](characters/brands/neophi.md) |
 
 ### Agent entrypoints
 

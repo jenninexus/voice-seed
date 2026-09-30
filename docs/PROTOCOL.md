@@ -24,14 +24,14 @@ Register rules: [`REGISTERS.md`](REGISTERS.md) · Map: [`../registry.json`](../r
 | Agency site-audit personality | Same agents (deeper lore) | `agencyAudit` + `agencyStudioShared` | `agency/agents/*.md` + `agency/docs/STUDIO-VOICE.md` |
 | Game security triage | Ops bot | `gameSecurityChat` | Game wiki persona file — live ops via the ops command |
 | Résumé / cover letter | Human applicant | `character` + `application` | pdf-designer vault — **never** Discord |
-| NEOPHI Signal Crew in-character update | Nyx / Zara / Kai / Luna / Orion / Phoenix | `signalTone` | `characters/neophi/<id>.md` (+ canon `neophi/src/assets/data/characters.md`) |
+| NEOPHI Signal Crew in-character update | Crew member | `signalTone` | `private/neophi/<id>.md` (studio-only) (+ canon `neophi/src/assets/data/characters.md`) |
 
 ---
 
 ## Repo ownership (hard boundaries)
 
 ```
-voice-seed     → map + public cards (incl. NEOPHI signalTone)
+voice-seed     → map + public cards (NEOPHI crew signalTone: studio-only `private/neophi/`)
 socials        → drafts, webhooks, previewer
 {bot}          → greeter, slash cmds, optional loft listen/reply runtime
 agency         → loft lore + STUDIO-VOICE (public characters)
@@ -93,7 +93,7 @@ desk does not borrow résumé or Patreon voice.
 
 ### E. NEOPHI Signal Crew update (in-character)
 
-1. `/voice-design neophi <nyx|zara|kai|luna|orion|phoenix>` → register `signalTone`
+1. `/voice-design neophi <id>` → register `signalTone` (studio overlay `private/neophi/`; not in a public clone)
 2. Confirm Visual DNA in neophi `characters.md` — don’t invent tokens
 3. Draft using that card’s **cadence + update hooks + samples**
 4. Site deep link: `https://neophi.world/?character={id}#gallery`

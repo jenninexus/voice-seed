@@ -59,8 +59,8 @@
       "ssotPattern": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
     },
     "signalTone": {
-      "purpose": "NEOPHI Signal Crew in-character speaking tone",
-      "ssotPattern": "characters/neophi/<id>.md",
+      "purpose": "NEOPHI Signal Crew in-character speaking tone (studio-only: private overlay, not in the public clone)",
+      "ssotPattern": "private/neophi/<id>.md",
       "canon": "neophi/src/assets/data/characters.md",
       "notThese": ["applicant voice", "studio we", "Agency loft chatVoice", "bot greeter"]
     }
@@ -136,12 +136,11 @@
       "card": "characters/brands/neophi.md",
       "registers": {
         "characterCanon": "neophi/src/assets/data/characters.md",
-        "signalTone": "characters/neophi/",
-        "siteDeck": "https://neophi.world/?character=nyx#gallery"
+        "signalTone": "private/neophi/<id>.md",
+        "siteDeck": "https://neophi.world/#gallery"
       },
-      "relatedCharacters": ["neophi-nyx", "neophi-zara", "neophi-kai", "neophi-luna", "neophi-orion", "neophi-phoenix"],
       "notThese": ["applicant voice", "studio we", "Agency loft chatVoice", "bot greeter"],
-      "lastReviewed": "2026-09-03"
+      "lastReviewed": "2026-09-30"
     },
     {
       "id": "brand-jerry",
@@ -156,84 +155,6 @@
       "relatedAgency": ["vixel"],
       "notThese": ["studio we", "internal file paths or dev jargon", "Agency loft chatVoice"],
       "lastReviewed": "2026-09-28"
-    },
-    {
-      "id": "neophi-nyx",
-      "family": "neophi",
-      "displayName": "Nyx (NEOPHI)",
-      "aliases": ["nyx", "signal-01"],
-      "card": "characters/neophi/nyx.md",
-      "registers": {
-        "signalTone": "characters/neophi/nyx.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#nyx",
-        "siteDeck": "https://neophi.world/?character=nyx#gallery"
-      },
-      "relatedBrand": "brand-neophi"
-    },
-    {
-      "id": "neophi-zara",
-      "family": "neophi",
-      "displayName": "Zara (NEOPHI)",
-      "aliases": ["zara", "signal-02"],
-      "card": "characters/neophi/zara.md",
-      "registers": {
-        "signalTone": "characters/neophi/zara.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#zara",
-        "siteDeck": "https://neophi.world/?character=zara#gallery"
-      },
-      "relatedBrand": "brand-neophi"
-    },
-    {
-      "id": "neophi-kai",
-      "family": "neophi",
-      "displayName": "Kai (NEOPHI)",
-      "aliases": ["kai", "signal-03"],
-      "card": "characters/neophi/kai.md",
-      "registers": {
-        "signalTone": "characters/neophi/kai.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#kai",
-        "siteDeck": "https://neophi.world/?character=kai#gallery"
-      },
-      "relatedBrand": "brand-neophi"
-    },
-    {
-      "id": "neophi-luna",
-      "family": "neophi",
-      "displayName": "Luna (NEOPHI)",
-      "aliases": ["luna", "signal-04"],
-      "card": "characters/neophi/luna.md",
-      "registers": {
-        "signalTone": "characters/neophi/luna.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#luna",
-        "siteDeck": "https://neophi.world/?character=luna#gallery"
-      },
-      "relatedBrand": "brand-neophi"
-    },
-    {
-      "id": "neophi-orion",
-      "family": "neophi",
-      "displayName": "Orion (NEOPHI)",
-      "aliases": ["orion", "signal-05"],
-      "card": "characters/neophi/orion.md",
-      "registers": {
-        "signalTone": "characters/neophi/orion.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#orion",
-        "siteDeck": "https://neophi.world/?character=orion#gallery"
-      },
-      "relatedBrand": "brand-neophi"
-    },
-    {
-      "id": "neophi-phoenix",
-      "family": "neophi",
-      "displayName": "Phoenix (NEOPHI)",
-      "aliases": ["phoenix", "signal-06"],
-      "card": "characters/neophi/phoenix.md",
-      "registers": {
-        "signalTone": "characters/neophi/phoenix.md",
-        "characterCanon": "neophi/src/assets/data/characters.md#phoenix",
-        "siteDeck": "https://neophi.world/?character=phoenix#gallery"
-      },
-      "relatedBrand": "brand-neophi"
     },
     {
       "id": "bot-jenni",

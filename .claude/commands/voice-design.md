@@ -1,6 +1,6 @@
 ---
 description: "Resolve writing voice — pick the register, open the owning SSOT, edit safely."
-argument-hint: "[character|application|social|bot|agency|ops|neophi|signal|lookup] [jenni|shade|jenninexus|martiangames|gub|neophi|nyx|zara|kai|luna|orion|phoenix|vidette|<agent>]"
+argument-hint: "[character|application|social|bot|agency|ops|neophi|signal|lookup] [jenni|shade|jenninexus|martiangames|gub|neophi|vidette|<agent>]"
 ---
 
 # /voice · /voice-design — Network Voice Router
@@ -33,7 +33,7 @@ Do **not** dump résumé `characterVoice`, bot greeter, Agency loft chat, or NEO
 | Join greeter | `/voice bot <id>` | `{bot}/content/greeting.md` |
 | Agency loft face | `/voice agency <Agent>` | `agency/agents/*.md` **+** `{bot}/resources/agency-profiles.json#chatVoice` |
 | Brand Discord draft | `/voice social <brand>` | format-manifest |
-| NEOPHI Signal Crew in-character | `/voice neophi <id>` | `characters/neophi/<id>.md` (`signalTone`) + canon `neophi/src/assets/data/characters.md` |
+| NEOPHI Signal Crew in-character | `/voice neophi <id>` | studio-only `private/neophi/<id>.md` (`signalTone`) + canon `neophi/src/assets/data/characters.md` |
 
 Full matrix: [`docs/PROTOCOL.md`](../../docs/PROTOCOL.md). Flow C is the Agency desk.
 
@@ -52,8 +52,7 @@ Register = **`application`**. Two layers, both blocking before prose.
 /voice-design bot <id>                     # greeter prose
 /voice-design agency vidette               # loft agent (audit md + Discord catalogue)
 /voice-design ops gub                      # game security triage voice
-/voice-design neophi zara                  # Signal Crew signalTone
-/voice-design signal luna                  # alias → neophi
+/voice-design neophi <id>                  # Signal Crew signalTone (studio-only overlay)
 ```
 
 Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` → `character`,
@@ -78,13 +77,13 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 | Embed chrome / emoji IDs | `discordVisual` | `{bot}/docs/STYLE-SPEC.md` + `assets.json` |
 | Loft agent personality + Discord face | `agency*` | `agency/agents/<Agent>.md` + `STUDIO-VOICE.md` **and** `{bot}/resources/agency-profiles.json#chatVoice` |
 | Game security triage | `gameSecurityChat` | Game wiki persona — live ops via `/gub` |
-| NEOPHI Signal Crew in-character | `signalTone` | `characters/neophi/<id>.md` (+ neophi canon) |
+| NEOPHI Signal Crew in-character | `signalTone` | studio-only `private/neophi/<id>.md` (+ neophi canon) |
 | “Where does X’s voice live?” | lookup | Print registry paths only |
 
 ### 2. Edit rules
 
 - **Edit the owning file.** Most cards under `characters/` stay short pointers —
-  **exception:** NEOPHI `signalTone` cards *are* the speaking SSOT.
+  **exception:** NEOPHI `signalTone` cards (studio-only, `private/neophi/`) *are* the speaking SSOT.
 - Visual DNA → neophi `characters.md` first.
 - **Update the map** (`registry.json` / notes) only when paths or roster change.
 - **Never** put vault claims, contacts, webhooks, or draft post bodies here.
@@ -162,16 +161,9 @@ Prefer **Hey friends**; not “Hey crew” / anonymous studio-updates copy.
 
 ### `neophi <id>` (aliases: `signal <id>`)
 
-Ids: `nyx` · `zara` · `kai` · `luna` · `orion` · `phoenix`
-
-1. Register = `signalTone`
-2. Open `characters/neophi/<id>.md`
-3. Cross-check Visual DNA in `neophi/src/assets/data/characters.md`
-4. Use **Update hooks** + samples
-5. Deep link: `https://neophi.world/?character=<id>#gallery`
-6. Remind: not applicant, not studio “we”, not Agency, not greeter
-
-No id → list six cards + `characters/brands/neophi.md`.
+Studio-only. NEOPHI is a private set: the route and its crew cards live in the overlay
+`private/voice-design.local.md` → `private/neophi/<id>.md`. In a public clone, use the brand tone in
+`characters/brands/neophi.md`.
 
 ## Dashboard (no args)
 

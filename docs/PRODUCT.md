@@ -36,7 +36,7 @@ Studio packaging / store board lives in the local product-design hub (`/products
 | socials | `socialMarketing` format-manifests | private until own scrub |
 | theme-designer | colors only; never a voice SSOT | yes |
 | [bot-seed](https://github.com/jenninexus/bot-seed) | `{bot}/` greeter + loft JSON | yes |
-| NEOPHI site | `signalTone` cards live *here*; visual canon stays in neophi | site live |
+| NEOPHI site | brand card only here; `signalTone` crew cards are studio-only (private overlay) | private set |
 | Live `jenni-bot` / `martian-bot` | consumers, **private forever** | never |
 
 Handshake / investor / collab voice is **not** a sibling product. It lives in the

@@ -21,7 +21,7 @@ a résumé, or a cover letter starts sounding like Patreon.
 | `agencyStudioShared` | Loft attributes every agent shares | Agency crew | `agency/docs/STUDIO-VOICE.md` | agency index |
 | `agencyDiscordChat` | Loft channel posters (`chatVoice`, faces) | Agent character | `{bot}/resources/agency-profiles.json` | agency index |
 | `gameSecurityChat` | Player-facing game security / triage | Ops — professional CM | Tank Off `Gub-Persona.md` | [`../characters/ops/gub.md`](../characters/ops/gub.md) |
-| `signalTone` | NEOPHI Signal Crew in-character lines / updates | Crew member “I” | `characters/neophi/<id>.md` (+ canon in neophi `characters.md`) | [`../characters/neophi/`](../characters/neophi/) |
+| `signalTone` | NEOPHI Signal Crew in-character lines / updates | Crew member “I” | `private/neophi/<id>.md` — studio-only overlay (+ canon in neophi `characters.md`) | [`../characters/brands/neophi.md`](../characters/brands/neophi.md) |
 
 **Not voice registers:** theme kits (colors & UI tokens). They may supply hex values used by
 `discordVisual`; they never own greeter or chat prose. Flow: [`PROTOCOL.md`](PROTOCOL.md).
@@ -48,7 +48,7 @@ a missing GitHub remote as a broken map.
    runtime samples/faces in the consuming bot’s `agency-profiles.json`. Keep them
    aligned; do not fork a third copy into voice-seed.
 8. **NEOPHI Signal Crew:** Visual DNA + traits stay in neophi `characters.md`.
-   Speaking tone for updates lives in `characters/neophi/*.md` (`signalTone`).
+   Speaking tone for updates lives in the studio-only overlay `private/neophi/*.md` (`signalTone`).
    Never dump Signal Crew chat into default brand Patreon unless the post is
    explicitly in-character and routed via `/voice-design neophi <id>`.
 

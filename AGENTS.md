@@ -26,7 +26,7 @@ drafts here.
 | `discordVisual` | Embed chrome / emoji IDs | No → `{bot}/docs/STYLE-SPEC.md` + `assets.json` |
 | `agency*` | Loft audit + Discord chat | No → `agency/agents/*.md` + `STUDIO-VOICE.md` + `{bot}/resources/agency-profiles.json` |
 | `gameSecurityChat` | Game Discord triage | No → game wiki persona (card: `characters/ops/gub.md`) |
-| `signalTone` | NEOPHI Signal Crew in-character updates | **Yes** — `characters/neophi/<id>.md` (Visual DNA stays in neophi `characters.md`) |
+| `signalTone` | NEOPHI Signal Crew in-character updates | **Studio-only** — `private/neophi/<id>.md` (gitignored overlay; Visual DNA stays in neophi `characters.md`) |
 | map / seeds | Index + templates | **Yes** — `registry.json`, `characters/`, `templates/` |
 
 ## Commands
@@ -61,7 +61,8 @@ if the task crosses registers.
 
 1. **Register before prose.** Name the register before writing a sentence.
 2. **Edit the owning SSOT**, not a copy in this repo — **exception:** NEOPHI
-   `signalTone` cards under `characters/neophi/` *are* the speaking SSOT.
+   `signalTone` cards in the private overlay `private/neophi/` *are* the speaking SSOT (studio machines only;
+   NEOPHI is a private set until the owner approves public copy).
 3. **Agency ≠ humans.** Loft agents never bleed into applications. Humans never
    become loft mascots in Patreon copy.
 4. **Ops ≠ Agency ≠ marketing.** Triage is zero role-play / zero emoji; never
@@ -80,8 +81,9 @@ if the task crosses registers.
 
 ## When NEOPHI Signal Crew asks for voice
 
-1. Register = `signalTone` → `/voice-design neophi <nyx|zara|kai|luna|orion|phoenix>`
-2. Edit `characters/neophi/<id>.md` (cadence / update hooks / samples)
+1. Register = `signalTone` → `/voice-design neophi <id>`
+2. Edit `private/neophi/<id>.md` (cadence / update hooks / samples). Absent in a public clone — use the brand
+   card `characters/brands/neophi.md` instead
 3. Visual DNA / tokens → `neophi/src/assets/data/characters.md` first
 4. Site deck: `https://neophi.world/?character=<id>#gallery`
 

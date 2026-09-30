@@ -26,7 +26,8 @@ const findRepo = (name) => searchRoots.map((r) => join(r, name)).find((p) => exi
 const strict = process.argv.includes("--strict");
 const registry = JSON.parse(readFileSync(join(here, "registry.json"), "utf8"));
 const bots = registry._meta?.bots ?? ["jenni-bot", "martian-bot"];
-const LOCAL = ["characters", "docs", "templates", "scripts"];
+// private/ is the studio overlay: checked when present, skipped in a public clone.
+const LOCAL = ["characters", "docs", "templates", "scripts", ...(existsSync(join(here, "private")) ? ["private"] : [])];
 const PATHLIKE = /^[\w .{}<>|/@-]+\.(md|json|ya?ml)(#[\w.-]+)?$/;
 
 const results = { ok: 0, broken: [], skipped: new Map() };
