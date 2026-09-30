@@ -29,6 +29,13 @@ This page marks the boundary so the two never blur.
   open-source voice cloning, text-described **voice design**, dubbing, dictation
   and transcription, with a local API and an MCP server so agents can speak in a
   chosen voice. **AGPL-3.0:** use it as a separate app; do not copy its code here.
+  ⚠ **The app is free; the models have their own licences.** VoiceStudio's default engine, OmniVoice, has
+  Apache-2.0 code but **CC-BY-NC (non-commercial) pretrained weights**, and its audio tokenizer carries separate
+  community-licence terms. Use it for private auditions only. For anything commercial (a brand, a paid product, a
+  monetised channel), pick an engine whose *weights* allow it. **VoxCPM2** is Apache-2.0 for code and weights, and it
+  also designs voices from a text description. Read the model card before release; licences change. Checked 2026-09-30.
+- **Ports.** If VoiceStudio runs for this map, keep it off its stock port 3900 so it never collides with a desktop
+  install. The keys are in [`.env.example`](../.env.example) (`VOICESTUDIO_PORT`, `VOICESTUDIO_TUNNEL_PORT`).
 
 ## Use it with a character
 
