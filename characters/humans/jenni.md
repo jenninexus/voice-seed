@@ -64,6 +64,16 @@ Full contrast block → `characterVoice.contrastWithPartner` in the person file.
 
 ---
 
+## Spoken voice (brief)
+
+bright, warm mezzo · quick but clear · smiles through the opener · performer's ease · no uptalk, no hard sell
+Tool profile: jenni-designed
+
+A *designed* voice from this brief — not a recording or clone of Jenni's own voice. Cloning needs her
+consent and her own recordings ([`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md)).
+
+---
+
 ## How to refresh
 
 1. Update `characterVoice` for personality / samples / emoji / social posting prefs.

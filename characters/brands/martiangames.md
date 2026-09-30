@@ -24,3 +24,11 @@ Default webhook name may be generic, but **teammate posts** should set
 
 - **Jenni face:** greet **friends** (not “crew”); see [`../humans/jenni.md`](../humans/jenni.md) § Social posting style.
 - **Joint Patreon:** grateful studio “we” is fine — still not résumé voice.
+
+## Spoken voice (brief)
+
+friendly studio narrator · steady mid-range · practical, behind-the-scenes warmth · even pace, no trailer-voice hype
+Tool profile: martiangames-studio
+
+A brand voice, deliberately distinct from both founders — never a clone of Jenni or Shade. See
+[`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md).

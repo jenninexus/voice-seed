@@ -55,6 +55,16 @@ founder's work or turn an individual candidacy into an ambiguous studio pitch.
 
 ---
 
+## Spoken voice (brief)
+
+calm, low and assured · unhurried, precise consonants · lets a technical term land, then pauses · warm, never salesy
+Tool profile: shade-designed
+
+A *designed* voice from this brief — not a recording or clone of Shade's own voice. Cloning needs her
+consent and her own recordings ([`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md)).
+
+---
+
 ## How to refresh
 
 1. Update `characterVoice` for personality / samples / emoji.

@@ -43,6 +43,11 @@ This page marks the boundary so the two never blur.
    Keep it to texture words and pacing. It is public-safe prose, worded in the character's own register.
 2. **Design the voice** in VoiceStudio's *Voice design* workspace: paste the brief as the description,
    generate, keep the take you like as a saved voice. Or *Voice cloning* from a consenting speaker's clean clip.
+   ⚠ Design mode hears **tags only**: gender, age, pitch, whisper, English accent. Texture words
+   ("warm", "rasp") come back as *unmatched* and are dropped. Carry pace with the generation speed setting,
+   carry texture in how the script is written, and change the seed to audition a different speaker with the same tags.
+   API save: `POST /profiles` (multipart form: `kind=design`, `vd_states` JSON, `instruct` tags, `seed`) on the
+   local backend (default port 3900).
 3. **Give it to agents.** VoiceStudio mounts an MCP server at `/mcp` on its local backend
    (`generate_speech`, `clone_voice`, `transcribe`, `list_voices`). Point your agent's MCP config at it and
    bind the saved voice per agent. The voice profile stays inside VoiceStudio's data folder — never in git.
