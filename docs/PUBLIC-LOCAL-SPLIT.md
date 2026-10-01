@@ -35,6 +35,7 @@ Never ship these on a public `main`:
 | Session logs | `dev-log-*.yaml` — retired; do not recreate |
 | Generated agent wrappers | `.codex/`, `.agents/` (gitignored) — rebuilt per machine from the one command |
 | Studio overlay | `private/` (gitignored) — see below |
+| Private roadmap + developer FAQ | `storage/docs/` (gitignored) — `ROADMAP.md`, `FAQ.md`; the clone gets `docs/` instead |
 
 Human personality and application voice stay in **pdf-designer** gitignored vaults.
 Brand marketing prose stays in **socials** format-manifests.

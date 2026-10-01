@@ -34,6 +34,7 @@ This page marks the boundary so the two never blur.
   community-licence terms. Use it for private auditions only. For anything commercial (a brand, a paid product, a
   monetised channel), pick an engine whose *weights* allow it. **VoxCPM2** is Apache-2.0 for code and weights, and it
   also designs voices from a text description. Read the model card before release; licences change. Checked 2026-09-30.
+- **Models and weights.** See [Models we have tried](#models-we-have-tried) below.
 - **Ports.** If VoiceStudio runs for this map, keep it off its stock port 3900 so it never collides with a desktop
   install. The keys are in [`.env.example`](../.env.example) (`VOICESTUDIO_PORT`, `VOICESTUDIO_TUNNEL_PORT`).
 
@@ -68,6 +69,36 @@ This page marks the boundary so the two never blur.
    designs their own voice from the same brief.
 
 GPU note from its docs: on Windows, GPU acceleration is NVIDIA/CUDA only; other GPUs run on CPU, much slower.
+
+## Models we have tried
+
+VoiceStudio is the app. The voice comes from an **engine**, and each engine downloads its own **weights** under its
+own licence. The app's licence (AGPL-3.0) says nothing about whether you may publish what a model says: the
+**weights** licence does. Check the model card again before any release; licences change.
+
+| Engine (VoiceStudio id) | Weights to download | Size on disk | GPU memory | Code licence | **Weights licence** | Public / commercial use? | Clone from a recording | Design from a description |
+|---|---|---|---|---|---|---|---|---|
+| OmniVoice (`omnivoice`, default) | [`k2-fsa/OmniVoice`](https://huggingface.co/k2-fsa/OmniVoice), 0.6B params | ~2.6 GB | ≥ 6 GB (VoiceStudio's floor) | Apache-2.0 | **CC-BY-NC** (non-commercial). Its audio tokenizer adds Boson Higgs Audio 2 / Llama community terms | **No.** Private auditions only | ✅ (uses up to 20 s) | ✅ tags only: gender, age, pitch, whisper, English accent |
+| VoxCPM2 (`voxcpm2`) | [`openbmb/VoxCPM2`](https://huggingface.co/openbmb/VoxCPM2), 2B params: `model.safetensors` 4.6 GB + `audiovae.pth` 0.4 GB | ~5 GB weights + ~5 GB engine environment (CUDA PyTorch) | ~8 GB (model card); loads in bf16 at ~5.5 GB on an 8 GB RTX 3070. **Loading also takes ~10 GB of system RAM** | Apache-2.0 | **Apache-2.0** | **Yes**, with the usual AI-voice disclosure | ✅ (uses the first 30 s) | ✅ free-text description, 48 kHz output, 30 languages |
+
+Where to get them: VoiceStudio downloads the weights on first use. OmniVoice ships with the app. VoxCPM2 installs from
+**Model Catalogue → VoxCPM2 → Install** (or `POST /engines/sidecar/voxcpm2/install` on the local backend) into its own
+Python environment under VoiceStudio's data folder. VoiceStudio unloads the previous engine before loading the next,
+so the two never share the GPU.
+
+Install traps seen on Windows (2026-09-30, VoiceStudio 0.5.6): when the backend runs over ssh or as a background
+process, `uv` cannot read its own managed Python installs (`os error 448`), so the one-click install fails at
+"create venv". Start the backend with `UV_PYTHON_PREFERENCE=only-system`, and if another Python on `PATH` trips the
+same error, pre-create the engine's `.venv` with an explicit system Python (3.10–3.12) and click Install again. A
+machine memory guard can also kill the engine while it loads, which VoiceStudio reports only as "sidecar closed pipe
+mid-generate": check free system memory first.
+
+Checked against both model cards on 2026-09-30. An earlier note in this repo called OmniVoice "Apache-2.0": that is
+true of its code only, not its weights.
+
+**Cloning a real person** (your own voice included) is the same mechanism as above with a reference recording. Do it
+only with that person's recorded consent, and keep the recording and the saved voice out of every repo. Hosted
+services (for example ElevenLabs instant / professional voice cloning) also work; read their commercial terms per plan.
 
 ## Forking VoiceStudio
 
