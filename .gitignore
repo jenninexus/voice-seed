@@ -62,3 +62,6 @@ __pycache__/
 venv/
 *.log
 logs/
+
+# Agent memory (lessons, local only). Spec: ~/.claude/network-memory/README.md
+.memory/
