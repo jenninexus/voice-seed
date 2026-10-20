@@ -135,6 +135,7 @@ if the task crosses registers.
 | `characters/ops/` | Game security voices |
 | `templates/` | Seed shapes for new voices |
 | `.claude/commands/voice-design.md` | Repo-local procedure |
+| `private/voices/` | **The voice lab** (gitignored): the VoiceStudio profile SSOTs, the clone-consent ledger, the engine renders and the lab's audition page. Spoken voice — the written registers stay in pdf-designer |
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | Public roadmap. Session plans are local (`Plans/`, gitignored). No sego yaml. |
 
 ## Related

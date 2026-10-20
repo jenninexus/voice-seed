@@ -81,7 +81,7 @@ takes. It is not a design — it is her voice, with the phone-mic artefacts remo
 |---|---|
 | Tool profile (by label only) | `founder-solo` and `founder-merged` in VoiceStudio — OmniVoice, **CC-BY-NC weights, private audition only** |
 | Listen and compare | `game-dev` → `games/Dress-Up/Jenni-Styles/Art/audio/listen.html` — the restoration ladder and the clone renders, side by side |
-| Consent | `pdf-designer/profiles/voices/CONSENT.md` |
+| Consent | `voice-seed/private/voices/CONSENT.md` |
 | Method and tools | [`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md) → *Restoring a recording before you clone it* |
 
 **Restore, then clone.** The clone was made from the *restored* audio, not the raw takes — an

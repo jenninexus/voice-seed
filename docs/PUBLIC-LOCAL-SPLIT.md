@@ -85,6 +85,7 @@ studio-only. A public clone simply doesn't have it and works the same.
 | `private/voice-design.local.md` | Extra `/voice-design` routes; the public command reads it when present |
 | `private/studio-voice.md` | Private registers (e.g. investor, creator-collab) |
 | `private/VOICE-CONSUMERS.md` | Audit of how sibling repos consume this map |
+| `private/voices/` | **The voice lab** (moved from `pdf-designer/profiles/voices/` 2026-10-20): the VoiceStudio profile SSOTs, the clone-consent ledger, the engine renders, the lab's audition page. Spoken voice — a voice sample is biometric data, and the OmniVoice renders are CC-BY-NC, so none of it can be public |
 | `private/neophi/` | NEOPHI Signal Crew `signalTone` cards (private set; until a private cast repo owns them) |
 | `private/archive/` | Frozen history, read-only |
 

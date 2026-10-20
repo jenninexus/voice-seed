@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 """Build the Jenni Styles voice preview page.
 
-Writes `Art/audio/listen.html`: one page that plays the game's shipped voice
-clips, the trailer voice restoration ladder (original -> matched -> pop-fix ->
-clean -> studio) and the OmniVoice clone renders, so the owner can hear each
-step and decide what actually works.
+Writes `Art/audio/listen.html`: one page that plays every voice the game has -
+the shipped game clips, the cartoon character voice, the trailer voice
+restoration ladder (original -> matched -> pop-fix -> clean -> studio) and the
+OmniVoice clone renders - so the owner can hear each step and decide what
+actually works.
+
+The cartoon voice lives in the voice lab, `voice-seed/private/voices/`. The
+builder copies it in as mp3 under `Art/audio/audition/` and reads the line text
+from the `jenni-styles` VoiceStudio profile, so the lab stays the source of
+truth and this page stays the single place to listen. A subfolder matters: the
+Unity staging copy of Art/audio is non-recursive, so none of it can reach the
+project or the portal ZIP.
 
 The page links to the audio files by relative path. It never embeds them:
 base64 audio in a tracked HTML file would bloat the repo, and the game-dev
@@ -60,7 +68,7 @@ GAME_CLIPS = [
 ]
 
 # --- The cartoon character voice, which lives in the voice lab ----------------
-# The lab (pdf-designer/profiles/voices) holds the VoiceStudio profile SSOTs and
+# The lab (voice-seed/private/voices) holds the VoiceStudio profile SSOTs and
 # the engine renders for every voice in the studio. The GAME's page needs the
 # cartoon one, so the lab audio is copied in as mp3 under Art/audio/audition/.
 # A subfolder matters: the Unity staging copy of Art/audio is non-recursive, so
@@ -196,7 +204,7 @@ def cartoon_section(lab_dir: Path, dest_dir: Path) -> str:
         f'{missing_note}'
         '<p class="note">The source of truth for these lines is the VoiceStudio profile '
         '<code>jenni-styles.voicestudio.json</code> in the voice lab; the masters live in '
-        '<code>pdf-designer/profiles/voices/audition/</code>.</p>'
+        '<code>voice-seed/private/voices/audition/</code>.</p>'
     )
 
 
@@ -466,8 +474,9 @@ def main() -> int:
     ap.add_argument("--audio-dir", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--lab-dir", type=Path,
-                    help="the voice lab (pdf-designer/profiles/voices). When given, the cartoon "
-                         "character voice is copied in and compiled into the page")
+                    default=Path(r"C:\Github\voice-seed\private\voices"),
+                    help="the voice lab. When given, the cartoon character voice is copied in "
+                         "and compiled into the page (default: this repo's private/voices)")
     args = ap.parse_args()
 
     audio_dir = args.audio_dir

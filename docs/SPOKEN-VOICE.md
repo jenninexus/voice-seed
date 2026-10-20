@@ -156,7 +156,15 @@ ladder, the clone renders and the measurements are in the game's
 `Jenni-Styles/Art/audio/omni/`, with the audition page at
 `Jenni-Styles/Art/audio/listen.html` (private LAN repo, never a portal build — the Unity staging
 copy is non-recursive and takes only the top-level game clips). Consent is logged in
-`pdf-designer/profiles/voices/CONSENT.md`.
+`private/voices/CONSENT.md`.
+
+**The lab lives here, in `private/`.** The VoiceStudio profile SSOTs, the clone-consent ledger and
+the engine renders are `private/voices/` in **this** repo — gitignored, never pushed, because a
+voice sample is biometric data. It moved there from `pdf-designer/profiles/voices/` on 2026-10-20:
+pdf-designer owns *written* voice (personality and résumé prose), and spoken voice is a different
+job with different risks. The lab's own audition page is `private/voices/audition/listen.html`
+(`listen.ps1` opens it); the **game's** voices are compiled into the game's own page instead, so
+auditioning the game never means opening a second tab.
 
 ## Forking VoiceStudio
 
