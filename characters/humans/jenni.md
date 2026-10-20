@@ -72,6 +72,25 @@ Tool profile: jenni-designed
 A *designed* voice from this brief — not a recording or clone of Jenni's own voice. Cloning needs her
 consent and her own recordings ([`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md)).
 
+### Her real voice (consented clone, private)
+
+She also has a **clone of her own recorded voice**, built from the restored Jenni Styles trailer
+takes. It is not a design — it is her voice, with the phone-mic artefacts removed first.
+
+| What | Where |
+|---|---|
+| Tool profile (by label only) | `founder-solo` and `founder-merged` in VoiceStudio — OmniVoice, **CC-BY-NC weights, private audition only** |
+| Listen and compare | `game-dev` → `games/Dress-Up/Jenni-Styles/Art/audio/listen.html` — the restoration ladder and the clone renders, side by side |
+| Consent | `pdf-designer/profiles/voices/CONSENT.md` |
+| Method and tools | [`../../docs/SPOKEN-VOICE.md`](../../docs/SPOKEN-VOICE.md) → *Restoring a recording before you clone it* |
+
+**Restore, then clone.** The clone was made from the *restored* audio, not the raw takes — an
+engine clones the artefacts too. Any new recording of hers should go through the same chain
+(`voice-seed/scripts/restore-voice-clip.py`) before it becomes a reference.
+
+**Never publish it.** OmniVoice's weights are CC-BY-NC, the clone is a private audition, and the
+community `omnivoice-gallery` catalogue is a publishing surface a founder's voice must never touch.
+
 ---
 
 ## How to refresh

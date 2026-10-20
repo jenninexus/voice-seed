@@ -100,6 +100,64 @@ true of its code only, not its weights.
 only with that person's recorded consent, and keep the recording and the saved voice out of every repo. Hosted
 services (for example ElevenLabs instant / professional voice cloning) also work; read their commercial terms per plan.
 
+## Restoring a recording before you clone it
+
+**A synthesis engine cannot repair audio.** OmniVoice and VoxCPM2 take a reference recording and
+reproduce a *voice*; neither de-clicks, de-esses, de-noises or de-plosives anything. They clone
+whatever you hand them, artefacts included. A reference that still has the lip pops and the mouth
+sounds teaches the model those sounds, and every line it says afterwards carries them.
+
+So the order is always: **restore the recording first, then clone the restored audio.** The tools
+below live in `scripts/` and hold no audio.
+
+| Script | Does |
+|---|---|
+| `scripts/restore-voice-clip.py` | The restoration chain: high-pass, de-click, spectral transient suppression (plosives *and* mouth sounds, detected separately), spectral gating against a gap-derived noise profile, de-esser, gentle compression, loudness normalisation. `--analyze` reports measurements, `--spectrogram` writes a PNG so the artefacts are seen, not guessed. |
+| `scripts/restore-trailer-set.ps1` | Runs the chain over a folder of clips at four settings and writes the measurement table. |
+| `scripts/transcribe-voice-clips.py` | faster-whisper (small.en, CPU) word-level transcript. A clone's reference text must match the audio exactly, and the transcript is what makes that checkable. |
+| `scripts/build-voice-reference.py` | Assembles restored clips into a clone reference that fits the engine's cap, with the matching transcript. |
+| `scripts/normalize-clone-renders.py` | Puts every rendered line at the same loudness, so a difference in level is never mistaken for a difference in voice. |
+| `scripts/build-voice-preview.py` | Builds the audition page: every clip, every setting, side by side. |
+
+**The three settings, and why they are separate.** "Cleaned" is a dial, not a switch:
+
+- **popfix** — de-click, tame the plosives, de-ess. Room tone and mouth sounds left alone.
+- **clean** — popfix plus spectral denoising and a gap expander.
+- **studio** — the most processing. This is what a clone reference should be built from.
+
+Always keep a **level-matched but otherwise untouched** copy of the original next to them. Without
+it, the loudness change masquerades as an improvement and the A/B proves nothing.
+
+**Measured on the five Jenni Styles trailer takes (2026-10-19).** Phone recordings, 44.1/48 kHz mono
+AAC, room noise around -46 to -59 dBFS, plosive bursts on the P/B/T consonants. The chain took the
+plosive events from 3-8 per clip down to 0-2, lifted SNR by 4 to 28 dB, dropped the noise floor by
+up to 24 dB, and landed every clip at -16 LUFS / <= -1 dBTP — the house spec in the Dress-Up
+`TRAILER-PLAN.md`. The full measurement table is in the game's
+`Art/audio/omni/restoration-report.json`.
+
+**OmniVoice constraints, found the hard way (2026-10-19, VoiceStudio 0.5.6):**
+
+| Constraint | Consequence |
+|---|---|
+| Reference audio caps at **20.0 s** (`CLONE_REF_TEXT_MAX_SECONDS`) | A longer reference is rejected. Build the reference to fit — and drop a clip whole rather than trimming it mid-sentence, because a half-clip makes the reference text disagree with the reference audio, and a mismatched pair is the quietest way to ruin a clone. |
+| Reads the reference at **24 kHz** | Write references at 24 kHz so nothing is resampled inside the model. |
+| `ref_text` must match the audio | Pass the transcript explicitly. Omitting it makes VoiceStudio transcribe at save time from *already-installed* ASR models only; with none installed it stays blank and the first take inherits stray words from the reference. |
+| Mid-silences over 300 ms are stripped from the reference | Long gaps between sentences are fine — the model removes them. |
+| Clone profile: `POST /profiles` multipart, `kind=clone`, `ref_audio` + `ref_text` | The save is the clone. `POST /generate` with `profile_id` then re-uses that sample for every line. `seed` changes the take; it does not change the speaker. |
+
+**Never publish a person's clone.** The
+[`omnivoice-gallery`](https://github.com/debpalash/omnivoice-gallery) submodule in the VoiceStudio
+checkout is a **community content catalogue** — the app loads it from a CDN and it accepts
+contributed *recorded reference clips*. It is a publishing surface. A founder's clone stays on a
+private machine, and the OmniVoice weights are CC-BY-NC besides.
+
+**Where the results live.** The Jenni Styles trailer work is the worked example: the restoration
+ladder, the clone renders and the measurements are in the game's
+`Jenni-Styles/Art/audio/omni/`, with the audition page at
+`Jenni-Styles/Art/audio/listen.html` (private LAN repo, never a portal build — the Unity staging
+copy is non-recursive and takes only the top-level game clips). Consent is logged in
+`pdf-designer/profiles/voices/CONSENT.md`.
+
 ## Forking VoiceStudio
 
 Forking is allowed. It is AGPL-3.0-only (see its `LICENSE-NOTICE.md`). A fork you customize must:

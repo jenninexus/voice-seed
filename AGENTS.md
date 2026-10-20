@@ -52,6 +52,24 @@ After changing a path in `registry.json` (or moving a file in a consumer repo), 
 `node scripts/check-registry.mjs` from this repo: it resolves every path against the sibling clones, reports
 broken ones, and skips repos you haven't cloned. Zero dependencies.
 
+## Scripts
+
+Zero-dependency tools that live here. **No audio in this repo** — the scripts read and write audio
+in the consuming repo and only ever print measurements.
+
+| Script | Does |
+|---|---|
+| `scripts/check-registry.mjs` | Resolves every path in `registry.json` against the sibling clones and reports broken ones. |
+| `scripts/restore-voice-clip.py` | Restores a spoken-voice recording: de-click, plosive and mouth-sound suppression, spectral denoise, de-ess, loudness. `--analyze` and `--spectrogram` for evidence. |
+| `scripts/restore-trailer-set.ps1` | Runs the chain over a folder at four settings and writes the measurement table. |
+| `scripts/transcribe-voice-clips.py` | faster-whisper (`small.en`, CPU) word-level transcript, with proper-noun fixes. |
+| `scripts/build-voice-reference.py` | Assembles restored clips into a clone reference that fits the engine's cap, with the matching transcript. |
+| `scripts/normalize-clone-renders.py` | Puts every rendered line at the same loudness so level never masquerades as voice. |
+| `scripts/build-voice-preview.py` | Builds the audition page: every clip, every setting, side by side. |
+
+Restoring a recording before cloning it, and what the measurements came out as:
+[`docs/SPOKEN-VOICE.md`](docs/SPOKEN-VOICE.md) → *Restoring a recording before you clone it*.
+
 ## First file to open
 
 [`registry.json`](registry.json), then [`docs/REGISTERS.md`](docs/REGISTERS.md)
