@@ -60,6 +60,14 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 
 ## Protocol (always)
 
+### House style hard rules (every register)
+
+- **No em dashes.** Use a comma, a colon, a period, or parentheses. Hyphens stay in compound words.
+- **No AI stock phrasing:** delve, seamless, leverage, unlock, elevate, robust, pivotal, landscape, realm, testament, foster, underscore, meticulous, intricate, vibrant, bustling, profound, myriad, plethora, embark, journey, game-changer, cutting-edge, state-of-the-art, revolutionize, empower, supercharge, unleash, world of, it's worth noting, in conclusion.
+- **No "not just X, it's Y" frame** and no decorative tricolons.
+- Concrete nouns and plain verbs beat adjectives. Name the artifact and the proof link.
+- Quoted source text and code keep their original punctuation.
+
 ### 0. Open the map
 
 1. Read `registry.json`

@@ -38,6 +38,18 @@ Register: **`socialMarketing`**. Prose SSOT: `socials/content/jenninexus/format-
 
 ---
 
+## House style: no em dashes, no AI tells
+
+This applies to every Jenni register: Discord, Patreon, X, site copy, bot greetings, and applications.
+
+- Never use an em dash. Use a comma, a colon, a period, or parentheses. Hyphens stay in compound words.
+- Avoid AI stock phrasing: delve, seamless, leverage, unlock, elevate, robust, pivotal, landscape, realm, testament, foster, underscore, meticulous, intricate, vibrant, bustling, profound, myriad, plethora, embark, journey, game-changer, cutting-edge, state-of-the-art, revolutionize, empower, supercharge, unleash, world of, it's worth noting, in conclusion.
+- Avoid the "not just X, it's Y" frame, decorative tricolons, and three-item lists used only for rhythm.
+- Prefer a plain verb and a concrete noun. Say what shipped, who it helps, and what happens next.
+- Quoted source text and code keep their original punctuation.
+
+---
+
 ## Registers (edit paths)
 
 | Register | Path |
