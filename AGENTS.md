@@ -24,7 +24,7 @@ drafts here.
 | `socialMarketing` | Patreon / Discord / news | No → `socials/content/<brand>/format-manifest.json` |
 | `botGreeter` | Join-welcome prose | No → `{bot}/content/greeting.md` |
 | `discordVisual` | Embed chrome / emoji IDs | No → `{bot}/docs/STYLE-SPEC.md` + `assets.json` |
-| `agency*` | Loft audit + Discord chat | No → `agency/agents/*.md` + `STUDIO-VOICE.md` + `{bot}/resources/agency-profiles.json` |
+| `agency*` | Project desk audit and Discord writing | No → project overlay or independent roster first. Public base in `agency/agents/*.md` + `STUDIO-VOICE.md`. The bot catalogue consumes the selected register. |
 | `gameSecurityChat` | Game Discord triage | No → game wiki persona (card: `characters/ops/gub.md`) |
 | `signalTone` | NEOPHI Signal Crew in-character updates | **Studio-only** — `private/neophi/<id>.md` (gitignored overlay; Visual DNA stays in neophi `characters.md`) |
 | map / seeds | Index + templates | **Yes** — `registry.json`, `characters/`, `templates/` |

@@ -31,7 +31,7 @@ Do **not** dump résumé `characterVoice`, bot greeter, Agency loft chat, or NEO
 | Poster | Command | SSOT |
 |---|---|---|
 | Join greeter | `/voice bot <id>` | `{bot}/content/greeting.md` |
-| Agency loft face | `/voice agency <Agent>` | `agency/agents/*.md` **+** `{bot}/resources/agency-profiles.json#chatVoice` |
+| Agency loft face | `/voice agency <Agent>` | Project overlay or independent profile first; public desk is the shared base |
 | Brand Discord draft | `/voice social <brand>` | format-manifest |
 | NEOPHI Signal Crew in-character | `/voice neophi <id>` | studio-only `private/neophi/<id>.md` (`signalTone`) + canon `neophi/src/assets/data/characters.md` |
 
@@ -50,7 +50,7 @@ Register = **`application`**. Two layers, both blocking before prose.
 /voice-design application shade            # edit vault #voice (+ #mission if present)
 /voice-design social jenninexus            # edit format-manifest marketing voice
 /voice-design bot <id>                     # greeter prose
-/voice-design agency vidette               # loft agent (audit md + Discord catalogue)
+/voice-design agency vidette               # resolve the written register from the caller project
 /voice-design ops gub                      # game security triage voice
 /voice-design neophi <id>                  # Signal Crew signalTone (studio-only overlay)
 ```
@@ -83,7 +83,7 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 | Patreon / Discord / news drafts | `socialMarketing` | `socials/content/<brand>/format-manifest.json` |
 | Join greeter copy | `botGreeter` | `{bot}/content/greeting.md` |
 | Embed chrome / emoji IDs | `discordVisual` | `{bot}/docs/STYLE-SPEC.md` + `assets.json` |
-| Loft agent personality + Discord face | `agency*` | `agency/agents/<Agent>.md` + `STUDIO-VOICE.md` **and** `{bot}/resources/agency-profiles.json#chatVoice` |
+| Loft agent personality + Discord face | `agency*` | Project profile first; see [`agency <Agent>`](#agency-agent) |
 | Game security triage | `gameSecurityChat` | Game wiki persona — live ops via `/gub` |
 | NEOPHI Signal Crew in-character | `signalTone` | studio-only `private/neophi/<id>.md` (+ neophi canon) |
 | “Where does X’s voice live?” | lookup | Print registry paths only |
@@ -91,7 +91,7 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 ### 2. Edit rules
 
 - **Edit the owning file.** Most cards under `characters/` stay short pointers —
-  **exception:** NEOPHI `signalTone` cards (studio-only, `private/neophi/`) *are* the speaking SSOT.
+  **exception:** NEOPHI `signalTone` cards (studio-only, `private/neophi/`) own the in-character writing register.
 - Visual DNA → neophi `characters.md` first.
 - **Update the map** (`registry.json` / notes) only when paths or roster change.
 - **Never** put vault claims, contacts, webhooks, or draft post bodies here.
@@ -155,11 +155,17 @@ Prefer **Hey friends**; not “Hey crew” / anonymous studio-updates copy.
 
 ### `agency <Agent>`
 
-1. Read `agency/docs/STUDIO-VOICE.md`
-2. Edit lore: `agency/agents/<Agent>.md`
-3. Edit Discord runtime: `{bot}/resources/agency-profiles.json` → `profiles[<id>].chatVoice`
-4. Remind: two layers; keep aligned; loft channel only; no mod authority
-5. Seed: `templates/agent-chatVoice.seed.md`
+1. Resolve the caller project and open its Agency protocol. For a submodule consumer, look for
+   `storage/agency/projects/<project>/<Agent>.md` first. For an independent roster, use its own
+   profile and register rules. In either case, use the project's declared character owner.
+2. For a public desk, read `agency/docs/STUDIO-VOICE.md` and `agency/agents/<Agent>.md` as the base.
+   Make project-specific edits in the overlay. Edit the public base in the standalone Agency checkout
+   for shared changes. If the project has no overlay yet, consult Agency's `projects/README.md`.
+3. Select the written register (`agencyAudit` or `agencyDiscordChat`). If a bot uses the changed
+   register, verify its catalogue against the owning profile and follow that project's sync procedure.
+4. Use `templates/agent-chatVoice.seed.md` for a written Discord sample. Keep planned spoken delivery
+   in the owning character's brief and route auditions or synthesis through the separate audio
+   workflow in [Spoken Voice](../../docs/SPOKEN-VOICE.md).
 
 ### `ops gub`
 
