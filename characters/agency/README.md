@@ -10,9 +10,9 @@
 
 | Layer | Register | SSOT |
 |-------|----------|------|
-| Audit / lore personality | `agencyAudit` | `agency/agents/<Name>.md` |
+| Audit / lore personality | `agencyAudit` | Public base `agency/agents/<Name>.md`, plus the consuming project's overlay or independent roster when present |
 | Shared loft rules | `agencyStudioShared` | `agency/docs/STUDIO-VOICE.md` |
-| Discord loft face + samples | `agencyDiscordChat` | `{bot}/resources/agency-profiles.json#chatVoice` |
+| Discord loft face + samples | `agencyDiscordChat` | Selected profile's `chatVoice`; a bot's `{bot}/resources/agency-profiles.json#chatVoice` is a runtime consumer |
 | Portraits / clips | (media, not voice) | consuming site media trees |
 
 `/voice-design agency <Agent>` edits the voice layers. Seed:
@@ -42,12 +42,16 @@ Portrait lore → agency `docs/AGENT-GUIDE.md` · `docs/ART-STYLE.md`.
 | Layer | Where |
 |---|---|
 | Public origin | `agency/agents/*.md` — personality, catchphrase, chatVoice summary |
-| Project override | `agency/projects/<project>/*.md` (gitignored in agency) |
+| Project override | The consumer's `storage/agency/projects/<project>/<Name>.md` (gitignored in Agency); independent rosters stay with their project |
 | Discord runtime | `{bot}/resources/agency-profiles.json` — face, emoji, reply samples |
 
 ---
 
 ## Customize
 
-`/voice-design agency <Agent>` — edit both layers (agency md + bot catalogue).  
+`/voice-design agency <Agent>` resolves the public base and applicable project profile. Edit the
+owning profile; update a bot catalogue only when that bot consumes the changed register, and verify
+the reader. Written register, planned spoken brief and approved audio are separate. A character
+registry may index visual references and voice pointers, but remains optional and does not own the
+underlying profile or register.
 Cross-repo flow: [`../../docs/PROTOCOL.md`](../../docs/PROTOCOL.md) **Flow C**.
