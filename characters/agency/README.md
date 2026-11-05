@@ -1,6 +1,6 @@
 # Agency agents — fictional loft crew
 
-**Family:** agency · **Shared loft:** `agency/docs/STUDIO-VOICE.md`  
+**Family:** agency · **Shared loft:** `agency/docs/STUDIO-VOICE.md`
 **Discord runtime:** `{bot}/resources/agency-profiles.json`
 
 > These are **site-audit + Discord studio characters**. They are **not** the
@@ -32,7 +32,7 @@
 | **Metrica** | Neon green `#39ff14` | Data night-owl | `agency/agents/Metrica.md` | `#metrica` |
 | **Vixel** | Orange `#FF6B4A` | Lone-wolf builder | `agency/agents/Vixel.md` | `#vixel` |
 
-Full shared attributes → agency `docs/STUDIO-VOICE.md`.  
+Full shared attributes → agency `docs/STUDIO-VOICE.md`.
 Portrait lore → agency `docs/AGENT-GUIDE.md` · `docs/ART-STYLE.md`.
 
 ---
