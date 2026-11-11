@@ -28,6 +28,7 @@ import argparse
 import datetime
 import html
 import json
+import re
 from pathlib import Path
 
 # The ladder, in the order the owner should hear them.
@@ -86,6 +87,65 @@ LAB_SOURCES = [
     ("voxcpm2/jenni-styles", "VoxCPM2", "Apache-2.0 weights - the commercial-safe path", "ok"),
 ]
 
+# --- Bubbles, the cat --------------------------------------------------------
+# Her voice is synthesised, not recorded and not cloned: one script with fixed
+# numbers rebuilds it byte-for-byte (Runtime-UI/tools/make-bubbles-voice.py).
+# Parameters, the classifier check and the OmniVoice answer: Docs/BUBBLES-VOICE.md.
+BUBBLES_SOUNDS = [
+    ("meow", "The signature meow", "0.50 s - one happy syllable. The default meow"),
+    ("mew", "Question mew", "0.34 s - something confusing happened"),
+    ("chirp", "Greeting chirp", "0.22 s - tiny, safe under dialogue"),
+    ("trill", "Greeting trill", "0.55 s - the rolled, friendliest one"),
+    ("purr", "Purr", "2.00 s - fades at both ends, loops"),
+]
+
+BUBBLES_OMNI = [
+    ("design-kitten-hello", "OmniVoice: a child voice saying \"Mew? Mrrow! Meow, meow.\"",
+     "design tags 'child, very high pitch' - a human SAYING meow, not a cat"),
+    ("clone-meow-meow", "OmniVoice: cloned the synthesized meow, said \"Meow! Meow!\"",
+     "it copied a high pitch, not a cat - human speech"),
+    ("clone-meow-sentence", "OmniVoice: same reference, \"Meow, meow! I am Bubbles.\"",
+     "the same thing with words, which is the whole problem"),
+]
+
+
+def bubbles_section(audio_dir: Path) -> str:
+    """Bubbles' voice, if the folder exists."""
+    d = audio_dir / "bubbles"
+    if not d.is_dir():
+        return ""
+    rows = ""
+    for stem, label, note in BUBBLES_SOUNDS:
+        src = f"bubbles/bubbles-{stem}.mp3"
+        if (audio_dir / src).exists():
+            rows += player(src, label, note)
+    omni_rows = ""
+    for stem, label, note in BUBBLES_OMNI:
+        src = f"bubbles/omni/{stem}.mp3"
+        if (audio_dir / src).exists():
+            omni_rows += player(src, label, note)
+    if not rows:
+        return ""
+    return (
+        '<h2 id="bubbles">Bubbles - the cat</h2>'
+        '<p class="note">The cat in every clip. She never speaks - she only ever meows - so '
+        'her voice is a <b>synthesised</b> set, not a recording and not a clone: one script '
+        'with fixed numbers rebuilds it byte-for-byte, so the same cat is available to every '
+        'future clip, port and sequel. The parameters were fitted to a measured real cat '
+        'meow, and the result was checked with an AudioSet classifier (the meow scores '
+        '0.78/1 as a meow, a real one 0.91). Numbers and the rules: '
+        '<a href="../../../Docs/BUBBLES-VOICE.md">Docs/BUBBLES-VOICE.md</a>.</p>'
+        f'<div class="takes">{rows}</div>'
+        '<h3><span class="eng">OmniVoice, asked for a cat</span> '
+        '<span class="badge nc">CC-BY-NC - never ships</span></h3>'
+        '<p class="note">It cannot make a meow: the model has no cat in its vocabulary (its '
+        'design tags are gender, age, pitch, whisper and accent) and its non-verbal tags are '
+        'human. These are what you get instead - a high voice <i>saying</i> the word. Kept as '
+        'evidence, not as candidates.</p>'
+        f'<div class="takes">{omni_rows}</div>'
+    )
+
+
 
 def esc(s: str) -> str:
     return html.escape(str(s))
@@ -132,19 +192,31 @@ def sync_lab_audio(lab_dir: Path, dest_dir: Path) -> list[tuple[str, str]]:
     return copied
 
 
-def cartoon_section(lab_dir: Path, dest_dir: Path) -> str:
+def cartoon_section(lab_dir: Path, dest_dir: Path, profile_name: str = "jenni-styles") -> str:
     """The cartoon character voice, compiled from the lab."""
-    profile = lab_dir / "jenni-styles.voicestudio.json"
+    profile = lab_dir / f"{profile_name}.voicestudio.json"
     lines: list[str] = []
     if profile.exists():
         spec = json.loads(profile.read_text(encoding="utf-8"))
         lines = list(spec.get("sampleLines", []))
+    if not profile.exists():
+        # A title with no designed voice yet still gets a page: it names the file to create.
+        return (
+            '<h2 id="cartoon">The character voice</h2>\n'
+            f'  <p class="note"><b>No designed voice yet.</b> The page and the pipeline are in place: create '
+            f'<code>{esc(profile_name)}.voicestudio.json</code> in the voice lab '
+            f'(<code>voice-seed/private/voices</code>), render it with the engine, and rebuild this page. '
+            'The lines the title needs are listed below.</p>\n'
+            '  <h2 id="lines">Lines this title needs</h2>\n'
+            '  <p class="note">Paste these into <code>sampleLines</code> when the profile is designed, so the '
+            'renders are named <code>&lt;voice&gt;-NN.mp3</code> and appear here automatically.</p>'
+        )
 
     def has(name: str) -> bool:
         return (dest_dir / f"{name}.mp3").exists()
 
     target_rows = ""
-    for wav, line, kind in CUTSCENE_TARGETS:
+    for wav, line, kind in (CUTSCENE_TARGETS if profile_name == "jenni-styles" else []):
         src = f"audition/cutscene-{wav[:-4]}.mp3"
         if not has(f"cutscene-{wav[:-4]}"):
             continue
@@ -161,7 +233,7 @@ def cartoon_section(lab_dir: Path, dest_dir: Path) -> str:
     missing: list[str] = []
     for folder, label, note, badge in LAB_SOURCES:
         rows = ""
-        prefix = "voxcpm2-jenni-styles" if "voxcpm2" in folder else "jenni-styles"
+        prefix = f"voxcpm2-{profile_name}" if "voxcpm2" in folder else profile_name
         if "voxcpm2" in folder:
             rows += player(f"audition/{prefix}-identity.mp3",
                            "Identity - the locked reference",
@@ -169,6 +241,14 @@ def cartoon_section(lab_dir: Path, dest_dir: Path) -> str:
         for i, line in enumerate(lines, 1):
             name = f"{prefix}-{i:02d}"
             if not has(name):
+                # A registered line with no render is shown, not hidden: the owner reads the
+                # page to decide a voice, and a line they asked about must be visible with its
+                # state (2026-11-11: the ending beat's two candidate lines).
+                rows += (
+                    f'<div class="take"><div class="lbl"><strong>{i:02d} - {esc(line)}</strong> '
+                    '<span class="badge">not rendered yet</span></div>'
+                    f'<span class="file">registered in the profile - run the audition to hear it</span></div>'
+                )
                 missing.append(f"{i:02d}")
                 continue
             rows += player(f"audition/{name}.mp3", f"{i:02d} - {line}")
@@ -209,7 +289,8 @@ def cartoon_section(lab_dir: Path, dest_dir: Path) -> str:
 
 
 def build(audio_dir: Path, report: dict, transcript: list, clone_files: dict,
-          cartoon: str = "") -> str:
+          cartoon: str = "", bubbles: str = "", title: str = "Jenni Styles",
+          founder: bool = True, banner: str = "") -> str:
     stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     by_clip: dict = {}
     for row in report:
@@ -292,11 +373,28 @@ def build(audio_dir: Path, report: dict, transcript: list, clone_files: dict,
             + rows + '</section>'
         )
 
+    if not founder:
+        ladder = ""
+        clone = ""
+    trailer_head = ('' if founder else '') + ('<h2 id="trailer">Trailer voice - restoration ladder</h2>' if founder else '')
+    toc_founder = '' if not founder else (
+        '<li><a href="#bubbles">Bubbles - the cat</a></li>'
+        '<li><a href="#trailer">Trailer voice - restoration ladder</a></li>'
+        '<li><a href="#clone">Clone of the founder\'s real voice</a></li>')
+    if not banner:
+        banner = (
+            '<div class="banner"><p class="note"><b>Read this first.</b> There are <b>two different Jenni voices</b> '
+            'on this page, and they are not interchangeable. The <b>cartoon</b> voice is the character - bright, '
+            'sweet and short, locked to the school-ready cutscene. The <b>founder</b> voice is a real recording, '
+            'and the ladder below is that recording cleaned up. Founder Jenni is also the real person behind the '
+            'character, which is exactly why the two must never be crossed: a <code>jenni-designed</code> clip or '
+            'a clone of her real voice is <b>not</b> the cartoon Jenni Styles voice, and must never be used as it.'
+            '</p></div>')
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Jenni Styles voice - preview</title>
+  <title>{esc(title)} voice - preview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* --- Aesyna brand layer. Values copied from the kit, not re-typed by hand:
@@ -415,27 +513,18 @@ def build(audio_dir: Path, report: dict, transcript: list, clone_files: dict,
 </head>
 <body>
 <main>
-  <h1>Jenni Styles voice</h1>
+  <h1>{esc(title)} voice</h1>
   <p class="note">Open this file from disk; no server needed. Rebuilt {esc(stamp)} by
      <code>voice-seed/scripts/build-voice-preview.py</code>. How the game clips map onto play is
      <a href="../../../Docs/AUDIO.md">AUDIO.md</a>.</p>
 
   <ul class="toc">
     <li><a href="#game">Game clips</a></li>
-    <li><a href="#cartoon">Cartoon voice (the character)</a></li>
-    <li><a href="#trailer">Trailer voice - restoration ladder</a></li>
-    <li><a href="#clone">Clone of the founder's real voice</a></li>
+    <li><a href="#cartoon">The character voice</a></li>
+    {toc_founder}
   </ul>
 
-  <div class="banner">
-    <p class="note"><b>Read this first.</b> There are <b>two different Jenni voices</b> on this
-    page, and they are not interchangeable. The <b>cartoon</b> voice is the character - bright,
-    sweet and short, locked to the school-ready cutscene. The <b>founder</b> voice is a real
-    recording, and the ladder below is that recording cleaned up. Founder Jenni is also the real
-    person behind the character, which is exactly why the two must never be crossed: a
-    <code>jenni-designed</code> clip or a clone of her real voice is <b>not</b> the cartoon
-    Jenni Styles voice, and must never be used as it.</p>
-  </div>
+  {banner}
 
   <h2 id="game">Game clips - the ones the game plays</h2>
   <p class="note">These are the shipped lines. They stream from <code>Art/audio</code> and are not
@@ -443,7 +532,8 @@ def build(audio_dir: Path, report: dict, transcript: list, clone_files: dict,
   {game_rows}
 
   {cartoon}
-  <h2 id="trailer">Trailer voice - restoration ladder</h2>
+  {bubbles}
+  {trailer_head}
   <p class="note">Five <b>founder</b> takes recorded for the trailer, on a phone. The mic caught
     the mouth sounds and the pops, so they were restored before anything else was done with them.
     The ladder is the same audio at four settings, so you can hear exactly what each step does.
@@ -469,10 +559,59 @@ def build(audio_dir: Path, report: dict, transcript: list, clone_files: dict,
 """
 
 
+def add_collapsible_sections(page: str, slug: str) -> str:
+    """Wrap every top-level <h2> section in a collapsible card, with Expand all / Collapse all.
+
+    The owner asked for the /dashboard behaviour on this page (2026-11-11): each section
+    folds on its own, the two buttons act on all of them, and the choice is remembered in
+    localStorage so a reload opens what they were looking at. Built here, in the generator,
+    so the page is never hand-edited.
+    """
+    # Two heading shapes exist: our own `<h2 id="...">` blocks, and the older
+    # `<section id="clone"><h2>...` block that closes itself.
+    parts = re.split(r'(?=<h2 id="|<section id="clone")', page)
+    head, body = parts[0], ""
+    for chunk in parts[1:]:
+        m = (re.match(r'<h2 id="([^"]+)"[^>]*>(.*?)</h2>', chunk, re.S)
+             or re.match(r'<section id="([^"]+)"[^>]*><h2>(.*?)</h2>', chunk, re.S))
+        if not m:
+            body += chunk
+            continue
+        sec_id, title, rest = m.group(1), m.group(2), chunk[m.end():]
+        stripped = rest.rstrip()
+        if stripped.endswith("</section>"):
+            rest = stripped[:-len("</section>")]
+        body += (
+            f'<section class="vu is-open" data-sec="{sec_id}">'
+            f'<button class="vu-head" type="button" aria-expanded="true" aria-controls="vu-{sec_id}">'
+            f'<span class="vu-chev" aria-hidden="true">&#9656;</span>'
+            f'<span class="vu-title">{title}</span></button>'
+            f'<div class="vu-body" id="vu-{sec_id}">{rest}</div></section>'
+        )
+    controls = ('<div class="vu-controls">'
+                '<button class="vu-btn" type="button" onclick="vuAll(true)">Expand all</button>'
+                '<button class="vu-btn" type="button" onclick="vuAll(false)">Collapse all</button>'
+                '</div>')
+    if "</ul>" in head:
+        head = head.replace("</ul>", "</ul>\n  " + controls, 1)
+    else:
+        head += controls
+    page = head + body
+    page = page.replace("</style>", '\n      /* ---- Per-section collapse (mirrors the /dashboard collapse-all) ---- */\n      .vu-controls { display:flex; gap:.5rem; justify-content:flex-end; margin:.2rem 0 1rem; }\n      .vu-btn {\n        font:inherit; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;\n        padding:.38rem .75rem; border-radius:var(--ae-r-chip, 6px); cursor:pointer;\n        color:var(--ae-ink-2); background:transparent; border:1px solid var(--ae-hairline);\n      }\n      .vu-btn:hover, .vu-btn:focus-visible { color:var(--ae-ink-hot); border-color:var(--ae-ink-3); }\n      .vu {\n        border:1px solid var(--ae-hairline); border-radius:var(--ae-r-component, 14px);\n        margin:0 0 .75rem; overflow:hidden; background:var(--ae-live-fill, transparent);\n      }\n      .vu-head {\n        display:flex; align-items:center; gap:.65rem; width:100%; padding:.75rem 1rem;\n        cursor:pointer; background:none; border:0; color:var(--ae-ink);\n        font-family:var(--font-display); text-align:left;\n      }\n      .vu-head:hover { background:var(--ae-hover-fill); }\n      .vu-head:focus-visible { outline:var(--ae-focus-ring); outline-offset:-2px; }\n      .vu-title { font-size:1.15rem; font-weight:600; letter-spacing:.01em; }\n      .vu-chev { font-size:.7rem; opacity:.65; transition:transform var(--motion-fast) var(--motion-ease); }\n      .vu.is-open .vu-chev { transform:rotate(90deg); }\n      .vu-body { display:none; padding:0 1rem 1rem; }\n      .vu.is-open .vu-body { display:block; }\n      .vu-body > h2 { display:none; }   /* the head carries the title now */\n      @media (prefers-reduced-motion: reduce) { .vu-chev { transition:none; } }\n' + "    </style>", 1)
+    page = page.replace("</body>", "\n<script>\n(function () {\n  var KEY = 'listen-sections-__SLUG__';\n  function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }\n  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }\n  function setOpen(sec, open) {\n    sec.classList.toggle('is-open', open);\n    var head = sec.querySelector('.vu-head');\n    if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');\n  }\n  function toggle(sec) {\n    var open = !sec.classList.contains('is-open');\n    setOpen(sec, open);\n    var s = load(); s[sec.dataset.sec] = open; save(s);\n  }\n  window.vuAll = function (open) {\n    var s = load();\n    document.querySelectorAll('section.vu').forEach(function (sec) {\n      setOpen(sec, open); s[sec.dataset.sec] = open;\n    });\n    save(s);\n  };\n  var saved = load();\n  document.querySelectorAll('section.vu').forEach(function (sec) {\n    var key = sec.dataset.sec;\n    setOpen(sec, (key in saved) ? !!saved[key] : true);\n    var head = sec.querySelector('.vu-head');\n    head.addEventListener('click', function () { toggle(sec); });\n    head.addEventListener('keydown', function (e) {\n      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(sec); }\n    });\n  });\n})();\n</script>\n".replace("__SLUG__", slug) + "</body>", 1)
+    return page
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--audio-dir", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--title", default="Jenni Styles",
+                    help="title shown in the page heading (default: Jenni Styles)")
+    ap.add_argument("--profile", default="jenni-styles",
+                    help="VoiceStudio profile id whose sampleLines this page lists (default: jenni-styles)")
+    ap.add_argument("--banner", default="",
+                    help="HTML placed in the page's top banner; the Jenni two-voices warning is the default")
     ap.add_argument("--lab-dir", type=Path,
                     default=Path(r"C:\Github\voice-seed\private\voices"),
                     help="the voice lab. When given, the cartoon character voice is copied in "
@@ -481,8 +620,12 @@ def main() -> int:
 
     audio_dir = args.audio_dir
     omni = audio_dir / "omni"
-    report = json.loads((omni / "restoration-report.json").read_text(encoding="utf-8"))
-    transcript = json.loads((omni / "transcript.json").read_text(encoding="utf-8"))
+    # The founder restoration ladder and clone renders are Jenni-only data, not a requirement:
+    # a second title's page is built without them.
+    report_path, transcript_path = omni / "restoration-report.json", omni / "transcript.json"
+    report = json.loads(report_path.read_text(encoding="utf-8")) if report_path.exists() else []
+    transcript = json.loads(transcript_path.read_text(encoding="utf-8")) if transcript_path.exists() else []
+    founder = bool(report) and bool(transcript)
 
     # clone renders: omni/clone/<name>.mp3
     clone_files = {}
@@ -493,11 +636,17 @@ def main() -> int:
 
     cartoon = ""
     if args.lab_dir and args.lab_dir.is_dir():
-        copied = sync_lab_audio(args.lab_dir / "audition", audio_dir / "audition")
-        cartoon = cartoon_section(args.lab_dir, audio_dir / "audition")
+        # Only a title WITH a designed profile gets the lab's renders copied in; otherwise
+        # another title's takes would land in this folder (Alter Kat has no voice yet).
+        copied = (sync_lab_audio(args.lab_dir / "audition", audio_dir / "audition")
+                  if (args.lab_dir / f"{args.profile}.voicestudio.json").exists() else [])
+        cartoon = cartoon_section(args.lab_dir, audio_dir / "audition", args.profile)
         print(f"synced {len(copied)} lab clips into {audio_dir / 'audition'}")
 
-    page = build(audio_dir, report, transcript, clone_files, cartoon)
+    bubbles = bubbles_section(audio_dir)
+    page = build(audio_dir, report, transcript, clone_files, cartoon, bubbles,
+                 title=args.title, founder=founder, banner=args.banner)
+    page = add_collapsible_sections(page, args.profile)
     args.out.write_text(page, encoding="utf-8")
     print(f"wrote {args.out} ({len(page)} bytes, {len(clone_files)} clone clips)")
     return 0
