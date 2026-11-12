@@ -59,7 +59,41 @@ This applies to every Jenni register: Discord, Patreon, X, site copy, bot greeti
 | **socialMarketing** | `socials/content/jenninexus/format-manifest.json#patreon_format.voice` |
 | **socialStudio** | `socials/content/martiangames/format-manifest.json#patreon_format.voice` |
 | **discordVisual** | `{bot}/docs/STYLE-SPEC.md` |
+| **`creatorCollab`** | `private/studio-voice.md` § creator collab (studio-only) |
+| **`emailFormal`** | `private/studio-voice.md` § formal correspondence (studio-only) |
+| **email routing + signatures** | [`docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md) · bodies in `private/signatures.md` |
 | **agencyStudioShared** | `agency/docs/STUDIO-VOICE.md` (fiction — not applicant) |
+
+---
+
+## Email surfaces
+
+Email is its own decision tree: which account, which register, which signature. Routing lives in
+[`docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md); the literal blocks (and the mailbox addresses) live in
+the studio-only `private/signatures.md`.
+
+| Account key | Surface it answers | Register | Signature slot |
+|---|---|---|---|
+| `jenninexus2` | **DIY w Jenni lane**: brand collabs, influencer and creator programs, gifted product, review requests, platform support | `creatorCollab` (DIY) | `diy-collab-address` · `diy-collab` |
+| `jenninexus` | Professional creator mail, formal and official correspondence, personal | `creatorCollab` · `emailFormal` · none | `pro-collab` · `formal-address` · `personal-short` |
+| `martiangames` | Studio and brand: partnerships, press, vendors, client work | `studioResume` · `investorSpeech` · `professionalNetwork` | `studio-jenni-shade` |
+| Handshake surfaces | Task authoring, reviewer replies, staff mail | `technicalAuthorship` | `hs` (no decoration) |
+
+Resolution order: **account key → register → owning card → exactly one signature slot.** A DIY media-kit
+link never appears in formal mail, and a legal-name block never appears in a collab thread.
+
+## Names on email
+
+| Situation | Signature name |
+|---|---|
+| Brand, creator, media, collab mail | `Jenni` |
+| Shipping form, publisher or platform account, invoice | full legal name (`private/signatures.md`) |
+| Landlord, bank, utility, benefit agency, legal, medical | full legal name with middle initial (`private/signatures.md`) |
+| Studio mail with both founders | `Jenni & Shade`, `Martian Games` underneath |
+| Handshake | first name only, no block |
+
+`Jenni Nexus` is site copy, not a signature. `Jenni` in a signature is never followed by a channel link in
+formal mail.
 
 ---
 

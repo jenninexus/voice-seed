@@ -1,6 +1,6 @@
 ---
 description: "Resolve writing voice — pick the register, open the owning SSOT, edit safely."
-argument-hint: "[character|application|social|bot|agency|ops|neophi|signal|lookup] [jenni|shade|jenninexus|martiangames|gub|neophi|vidette|<agent>]"
+argument-hint: "[character|application|social|bot|agency|ops|neophi|signal|email|lookup] [jenni|shade|jenninexus|martiangames|gub|neophi|vidette|<agent>]"
 ---
 
 # /voice · /voice-design — Network Voice Router
@@ -53,10 +53,13 @@ Register = **`application`**. Two layers, both blocking before prose.
 /voice-design agency vidette               # resolve the written register from the caller project
 /voice-design ops gub                      # game security triage voice
 /voice-design neophi <id>                  # Signal Crew signalTone (studio-only overlay)
+/voice-design email                        # email routing: account key → register → signature slot
+/voice-design email diy                    # the DIY w Jenni lane (creator collab mail)
+/voice-design email formal                 # official correspondence (landlord, bank, agency)
 ```
 
 Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` → `character`,
-`greeter` → `bot`, `gub`/`security`/`mod` → `ops gub`, `signal` → `neophi`.
+`greeter` → `bot`, `gub`/`security`/`mod` → `ops gub`, `signal` → `neophi`, `mail`/`signature`/`signatures` → `email`.
 
 ## Protocol (always)
 
@@ -86,6 +89,9 @@ Aliases: `marketing` → `social`, `resume`/`cover` → `application`, `person` 
 | Loft agent personality + Discord face | `agency*` | Project profile first; see [`agency <Agent>`](#agency-agent) |
 | Game security triage | `gameSecurityChat` | Game wiki persona — live ops via `/gub` |
 | NEOPHI Signal Crew in-character | `signalTone` | studio-only `private/neophi/<id>.md` (+ neophi canon) |
+| **Email: brand reply, collab, rates, gifting** | `creatorCollab` | [`../../docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md) → `private/studio-voice.md` |
+| **Email: official / formal** (landlord, bank, utility, agency, legal) | `emailFormal` | same |
+| **"Which account / signature do I use?"** | email routing | [`../../docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md) |
 | “Where does X’s voice live?” | lookup | Print registry paths only |
 
 ### 2. Edit rules
@@ -178,6 +184,24 @@ Prefer **Hey friends**; not “Hey crew” / anonymous studio-updates copy.
 Studio-only. NEOPHI is a private set: the route and its crew cards live in the overlay
 `private/voice-design.local.md` → `private/neophi/<id>.md`. In a public clone, use the brand tone in
 `characters/brands/neophi.md`.
+
+### `email [diy|formal|pro|lookup]`
+
+Email is a **routing** question before it is a voice question: which account, then which register, then one
+signature slot.
+
+1. Open [`../../docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md). Account keys there are the same keys
+   `sys-admin` uses (`email_send` / `email_fetch` `account`), so no mailbox address is stored in this repo.
+2. Follow the account row → register → owning card.
+3. **One** signature slot. Literal bodies (address, phone) → `private/signatures.md`; a public clone gets the
+   shapes only.
+4. `diy` = the DIY w Jenni lane (self-care, beauty and makeup, nail art, cooking) for creator collab mail from
+   the DIY mailbox: `jenninexus.com/diy`, `@diywjenni`, `jenninexus.com/media`, and the cook-with-me vlog offer
+   shape.
+5. `formal` = `emailFormal` for landlord, bank, utility, benefit agency, legal and medical mail: full legal
+   name, address, phone, no channel links, no emoji.
+6. `pro` = `creatorCollab` from the professional address, signed with the media-kit block.
+7. Delivery, threading, attachments, DMARC are **not** this command → `sys-admin` `docs/EMAIL-PROTOCOL.md`.
 
 ## Dashboard (no args)
 

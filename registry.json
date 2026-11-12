@@ -10,7 +10,8 @@
       "roadmap": "docs/ROADMAP.md",
       "overview": "docs/OVERVIEW.md",
       "publicLocalSplit": "docs/PUBLIC-LOCAL-SPLIT.md",
-      "product": "docs/PRODUCT.md"
+      "product": "docs/PRODUCT.md",
+      "email": "docs/EMAIL-VOICE.md"
     }
   },
   "registers": {
@@ -28,7 +29,8 @@
     },
     "studioResume": {
       "purpose": "Studio capability or games applications",
-      "ssotPattern": "pdf-designer/profiles/{studio-resume|martian-resume}.json#voice"
+      "ssotPattern": "pdf-designer/profiles/studio-resume.json#voice",
+      "gamesFocus": "pdf-designer/profiles/martian-resume.json#focusPath"
     },
     "socialMarketing": {
       "purpose": "Patreon / Discord / news brand posts",
@@ -63,6 +65,56 @@
       "ssotPattern": "private/neophi/<id>.md",
       "canon": "neophi/src/assets/data/characters.md",
       "notThese": ["applicant voice", "studio we", "Agency loft chatVoice", "bot greeter"]
+    },
+    "creatorCollab": {
+      "purpose": "Brand and agency partnership replies: rates, media kit, gifted product, sponsored tutorials",
+      "ssotPattern": "private/studio-voice.md",
+      "notThese": ["socialMarketing", "investorSpeech", "technicalAuthorship"]
+    },
+    "investorSpeech": {
+      "purpose": "Fund, VC, grant and inbound investor mail. Studio we is allowed here",
+      "ssotPattern": "private/studio-voice.md",
+      "notThese": ["creatorCollab rates", "creator sign-off"]
+    },
+    "emailFormal": {
+      "purpose": "Official correspondence: landlord, bank, utility, benefit agency, legal, medical",
+      "ssotPattern": "private/studio-voice.md",
+      "notThese": ["channel or media-kit links", "emoji", "creatorCollab"]
+    },
+    "professionalNetwork": {
+      "purpose": "LinkedIn and hiring replies, person or studio page",
+      "ssotPattern": "private/studio-voice.md"
+    },
+    "technicalAuthorship": {
+      "purpose": "Handshake task authoring, reviewer replies, staff mail",
+      "ssotPattern": "Handshake hub Voice card, never this repo"
+    }
+  },
+  "email": {
+    "composition": "docs/EMAIL-VOICE.md",
+    "signatureBodies": "private/signatures.md",
+    "transportOwner": "sys-admin EMAIL-PROTOCOL, not this repo",
+    "accounts": {
+      "jenninexus2": {
+        "surface": "DIY w Jenni lane: brand collabs, influencer and creator programs, gifted product, review requests, platform support",
+        "registers": ["creatorCollab"],
+        "signatures": ["diy-collab-address", "diy-collab"]
+      },
+      "jenninexus": {
+        "surface": "Professional creator mail, formal and official correspondence, personal",
+        "registers": ["creatorCollab", "emailFormal"],
+        "signatures": ["pro-collab", "formal-address", "personal-short"]
+      },
+      "martiangames": {
+        "surface": "Studio and brand: partnerships, press, vendors, client work, investor first contact",
+        "registers": ["studioResume", "investorSpeech", "professionalNetwork"],
+        "signatures": ["studio-jenni-shade"]
+      },
+      "handshake": {
+        "surface": "Handshake surfaces reached through the jenninexus mailbox",
+        "registers": ["technicalAuthorship"],
+        "signatures": ["hs"]
+      }
     }
   },
   "characters": [
@@ -78,8 +130,12 @@
         "socialMarketing": "socials/content/jenninexus/format-manifest.json#patreon_format.voice",
         "socialStudio": "socials/content/martiangames/format-manifest.json#patreon_format.voice",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
-        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md"
+        "agencyStudioShared": "agency/docs/STUDIO-VOICE.md",
+        "creatorCollab": "private/studio-voice.md",
+        "emailFormal": "private/studio-voice.md",
+        "email": "docs/EMAIL-VOICE.md"
       },
+      "emailAccounts": ["jenninexus2", "jenninexus"],
       "socialPostingPrefs": "characters/humans/jenni.md § Social posting style — prefer 'Hey friends'; warm product names; not Hey crew",
       "notThese": ["agency agents", "studio we on solo applications", "Vidette as Jenni"]
     },
@@ -121,7 +177,8 @@
         "socialMarketing": "socials/content/martiangames/format-manifest.json",
         "botGreeter": "{bot}/content/greeting.md",
         "studioResumeCapabilities": "pdf-designer/profiles/studio-resume.json#voice",
-        "studioResumeGames": "pdf-designer/profiles/martian-resume.json#voice",
+        "studioResumeGames": "pdf-designer/profiles/studio-resume.json#voice",
+        "studioResumeGamesFocus": "pdf-designer/profiles/martian-resume.json#focusPath",
         "discordVisual": "{bot}/docs/STYLE-SPEC.md",
         "gameSecurityChat": "Tank Off/Docs/Security/Gub_MG-Security_/Gub-Persona.md"
       },

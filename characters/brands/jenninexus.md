@@ -9,6 +9,7 @@
 | botGreeter | `{bot}/content/greeting.md` |
 | discordVisual | `{bot}/docs/STYLE-SPEC.md` |
 | agencyDiscordChat | `{bot}/resources/agency-profiles.json` |
+| **creatorCollab (DIY lane mail)** | [`../../docs/EMAIL-VOICE.md`](../../docs/EMAIL-VOICE.md) § The DIY lane · bodies `private/signatures.md` |
 | human owner card | [`../humans/jenni.md`](../humans/jenni.md) |
 
 ## socialMarketing (edit the manifest, not this card)

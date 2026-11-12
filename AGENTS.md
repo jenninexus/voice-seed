@@ -27,6 +27,8 @@ drafts here.
 | `agency*` | Project desk audit and Discord writing | No → project overlay or independent roster first. Public base in `agency/agents/*.md` + `STUDIO-VOICE.md`. The bot catalogue consumes the selected register. |
 | `gameSecurityChat` | Game Discord triage | No → game wiki persona (card: `characters/ops/gub.md`) |
 | `signalTone` | NEOPHI Signal Crew in-character updates | **Studio-only** — `private/neophi/<id>.md` (gitignored overlay; Visual DNA stays in neophi `characters.md`) |
+| `creatorCollab` · `investorSpeech` · `emailFormal` · `professionalNetwork` | Brand replies, fund mail, formal/official mail, LinkedIn | **Studio-only** — `private/studio-voice.md` (gitignored overlay) |
+| `technicalAuthorship` | Handshake task authoring and staff mail | No → Handshake hub `Voice/<name>-handshake` |
 | map / seeds | Index + templates | **Yes** — `registry.json`, `characters/`, `templates/` |
 
 ## Commands
@@ -112,6 +114,17 @@ if the task crosses registers.
 3. Chrome/emoji IDs → `discordVisual`, not prose.
 4. Theme kits supply colors only — never treat them as voice SSOTs.
 
+## When email asks for voice
+
+1. Open [`docs/EMAIL-VOICE.md`](docs/EMAIL-VOICE.md). Email is a **routing** question first: which account
+   key, then which register, then one signature slot.
+2. Account keys are the `sys-admin` `GMAIL_<KEY>_*` keys. This repo never stores a mailbox address; resolve
+   it with `sys-admin`.
+3. Literal signature bodies (with address and phone) → `private/signatures.md` (studio-only).
+4. Delivery, threading and DMARC are **not** this repo → `sys-admin` `docs/EMAIL-PROTOCOL.md`.
+5. A consumer app reads `registry.json` → `email` and follows the pointers. It never carries its own account
+   table or signature block.
+
 ## When résumés ask for voice
 
 1. Register = `character` + `application` (some tracks also load `#mission`).
@@ -124,6 +137,7 @@ if the task crosses registers.
 |---|---|
 | `registry.json` | Machine index of every voice |
 | `docs/REGISTERS.md` | Hard separation rules |
+| `docs/EMAIL-VOICE.md` | **Email composition + signature routing** (account key → register → slot) |
 | `docs/PROTOCOL.md` | socials ↔ bots ↔ agency posting flow |
 | `docs/ROADMAP.md` | Map / router next work |
 | `docs/OVERVIEW.md` | Narrative map |

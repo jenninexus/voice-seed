@@ -22,6 +22,15 @@ a résumé, or a cover letter starts sounding like Patreon.
 | `agencyDiscordChat` | Loft channel posters (`chatVoice`, faces) | Agent character | `{bot}/resources/agency-profiles.json` | agency index |
 | `gameSecurityChat` | Player-facing game security / triage | Ops — professional CM | Tank Off `Gub-Persona.md` | [`../characters/ops/gub.md`](../characters/ops/gub.md) |
 | `signalTone` | NEOPHI Signal Crew in-character lines / updates | Crew member “I” | `private/neophi/<id>.md` — studio-only overlay (+ canon in neophi `characters.md`) | [`../characters/brands/neophi.md`](../characters/brands/neophi.md) |
+| `creatorCollab` | Brand / agency partnership replies: rates, media kit, gifted product | Creator “I” | `private/studio-voice.md` § creator collab (studio-only) | [`../characters/humans/jenni.md`](../characters/humans/jenni.md) |
+| `investorSpeech` | Fund, VC, grant, inbound investor mail | Studio “we” allowed | `private/studio-voice.md` § investor speech (studio-only) | brand cards |
+| `emailFormal` | Landlord, bank, utility, benefit agency, legal, medical | Person, official | `private/studio-voice.md` § formal correspondence (studio-only) | human card |
+| `professionalNetwork` | LinkedIn and hiring replies | Person or studio page | `private/studio-voice.md` § LinkedIn (studio-only) | human / brand cards |
+| `technicalAuthorship` | Handshake task authoring, reviewer replies, staff mail | Practitioner | Handshake hub `Voice/<name>-handshake` (never this repo) | — |
+
+**Email is not a register, it is a routing question.** Which account, which register, which signature:
+[`EMAIL-VOICE.md`](EMAIL-VOICE.md) (public map) + `private/signatures.md` (literal blocks). Account keys are
+the `sys-admin` `GMAIL_<KEY>_*` keys, so the voice map never stores a mailbox address.
 
 **Not voice registers:** theme kits (colors & UI tokens). They may supply hex values used by
 `discordVisual`; they never own greeter or chat prose. Flow: [`PROTOCOL.md`](PROTOCOL.md).
