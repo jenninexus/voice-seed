@@ -13,7 +13,7 @@ useful without this repo.
 - `docs/REGISTERS.md` · `docs/PROTOCOL.md` · `docs/OVERVIEW.md`
 - `docs/PUBLIC-LOCAL-SPLIT.md` (this file) · `docs/PRODUCT.md`
 - `characters/agency/` — pointers to Agency prose, not a second SSOT
-- `templates/agent-chatVoice.seed.md` · `templates/character-voice.seed.json`
+- `templates/agent-chatVoice.seed.md` · `templates/character-voice.seed.json` · `templates/email-signature.example.md` (placeholders only; literals stay in `private/signatures.md`)
 - `AGENTS.md` · `README.md` — no machine-absolute disks, no emails, no legal names
 - `docs/ROADMAP.md` — the public roadmap (session plans are local, see below)
 - `docs/SPOKEN-VOICE.md` — spoken-voice boundary, how-to, and fork attribution for external TTS tools
@@ -29,6 +29,7 @@ Never ship these on a public `main`:
 |------|----------|
 | Absolute disks | Windows drive-letter clones, user-profile trees, finance folders |
 | Human PII | Legal names, personal emails, operator-platform identity |
+| Signature blocks with PII | Mailing address, phone, legal name, mailbox addresses. Literals live in `private/signatures.md`; the tracked counterpart is `templates/email-signature.example.md` with placeholders. Routing may name an account **key**, never the address behind it |
 | Studio-only registers | Handshake / investor / collab cards — Handshake hub `Voice/` only, never this repo |
 | Secrets | `.env`, webhooks, vault claims, analytics IDs |
 | Session plans | `Plans/` (gitignored) — studio work notes; the clone gets `docs/ROADMAP.md` instead |
